@@ -1,0 +1,4 @@
+flask
+requests
+firebase_admin
+openai
