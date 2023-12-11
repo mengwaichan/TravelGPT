@@ -14,6 +14,7 @@
     ```bash
     pip install -r requirements.txt
     ```
+
 make sure to have `firebase_auth.json` and `.env` in your directory.
 
 
