@@ -12,7 +12,7 @@ def get_route():
         origin_longitude = float(data.get('origin_longitude'))
         destination_latitude = float(data.get('destination_latitude'))
         destination_longitude = float(data.get('destination_longitude'))
-        travel_mode = data.get('transport')
+        travel_mode = data.get('transport').lower()
 
         route = Route()
 

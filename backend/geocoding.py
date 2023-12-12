@@ -28,5 +28,5 @@ class Geocoding:
 # To test run 'python geocoding.py' in terminal
 if __name__== '__main__':       
     test = Geocoding()
-    result = test.fetch_coordinates("Empire State Building")
+    result = test.fetch_coordinates("Arc de Triomphe")
     print(result)
