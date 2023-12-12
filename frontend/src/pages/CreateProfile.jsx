@@ -29,7 +29,7 @@ const CreateProfile = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${uid}`, // Include UID in the Authorization header
+            Authorization: `${uid}`, // Include UID in the Authorization header
           },
         }
       );
