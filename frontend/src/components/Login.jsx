@@ -1,23 +1,43 @@
 import React, {useState} from 'react'
 import { useUserAuth } from "./UserAuth"
 import { useNavigate, Link } from "react-router-dom"
+import { db } from '../firebase'
 
 const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const {signUp} = useUserAuth()
+    const {logIn} = useUserAuth();
+    const [error, setError] = useState(null)
     const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
-          try {
-            await logIn(email, password)
-            navigate("/home");
-          } catch (err) {
-            setError(err.message);
-            console.log(err);
+      e.preventDefault();
+      try {
+        const userCredential = await logIn(email, password);
+        const user = userCredential.user; 
+
+        if (user) {
+          const uid = user.uid;
+          console.log('User UID:', uid);
+    
+          const userDoc = await db.collection('users').doc(uid).get();
+    
+          if (userDoc.exists) {
+            // User exists in the 'users' collection, navigate to the home page
+            navigate('/home');
+          } else {
+            // User doesn't exist in the 'users' collection, navigate to the profile creation page
+            navigate('/create-profile');
           }
-      };
+        } else {
+          throw new Error('User not found');
+        }
+    
+      } catch (err) {
+        setError(err.message);
+        console.error(err);
+      }
+    };
     
   return (
     <div>

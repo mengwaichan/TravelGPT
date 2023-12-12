@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from openai import OpenAI
 import json
-from firebase_write import write_itinerary
+from write_itinerary import write_itinerary
 
 itinerary_blueprint = Blueprint('itinerary', __name__)
 

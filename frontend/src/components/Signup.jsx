@@ -1,9 +1,6 @@
 import React, {useState} from 'react'
 import { useUserAuth } from "./UserAuth"
 import { useNavigate, Link } from "react-router-dom"
-import { setDoc, doc } from 'firebase/firestore'
-import { db } from '../firebase'
-
 
 const Signup = () => {
     const [email, setEmail] = useState("")
@@ -15,24 +12,10 @@ const Signup = () => {
         e.preventDefault()
         try {
             await signUp(email, password)
-            await addUserdata()
             navigate("/login")
           } catch (err) {
             console.log(err)
           }
-      }
-
-      const addUserdata = async () => {
-        try {
-          await setDoc(doc(db, "Users", email), {
-            email,
-            example_array: [],
-            example_num: 0,
-          });
-          console.log("Document added successfully")
-        } catch (error) {
-          console.log("Error adding document:", error)
-        }
       }
     
 

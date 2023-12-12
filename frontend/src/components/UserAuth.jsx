@@ -3,8 +3,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-  signOut,
-  sendEmailVerification,
+  signOut
 } from "firebase/auth"
 import { auth } from "../firebase"
 
@@ -14,33 +13,31 @@ const userAuthContext = createContext()
 
 export function UserAuthContextProvider({ children }) {
   const [user, setUser] = useState({}) 
+  const [uid, setUid] = useState(null);
 
-  {/* Check verification of email before logging in User */}
-//   function logIn(email, password) {
-//     return signInWithEmailAndPassword(auth, email, password).then((cred) => {
-//       if (cred.user.emailVerified) {
-//         return cred.user
-//       } else {
-//         return logOut()
-//       }
-//     })
-//   }
+
   function logIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+      const loggedInUser = userCredential.user;
+      setUid(loggedInUser.uid);
+      return userCredential;
+    });
   }
 
-  {/* Send Verification email when User signs up */}
-//   function signUp(email, password) {
-//     return createUserWithEmailAndPassword(auth, email, password).then((cred) => {
-//       return sendEmailVerification(cred.user)
-//     })
-//   }
+
   function signUp(email, password) {
     return createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+      const newUser = userCredential.user;
+      setUid(newUser.uid);
+      return userCredential;
+    });
   }
 
   {/* Call to logout current user */}
   function logOut() {
+    setUid(null);
     return signOut(auth);
   }
 
@@ -48,6 +45,9 @@ export function UserAuthContextProvider({ children }) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
       setUser(currentuser);
+      if (currentUser) {
+        setUid(currentUser.uid);
+      }
     })
     return () => {
       unsubscribe()
@@ -56,7 +56,7 @@ export function UserAuthContextProvider({ children }) {
 
   {/* Functions to use when importing Auth to other components */}
   return (
-    <userAuthContext.Provider value={{ user, logIn, signUp, logOut }}> 
+    <userAuthContext.Provider value={{ user, uid, logIn, signUp, logOut }}> 
       {children}
     </userAuthContext.Provider>
   )
