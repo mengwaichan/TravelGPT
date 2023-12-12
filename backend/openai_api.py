@@ -33,7 +33,7 @@ def get_itinerary():
     data = request.get_json()
     city = data.get('city')
     duration = data.get('duration')
-    user_id = data.headers.get('UID')
+    user_id = request.headers.get('Authorization')
 
     if not city or not duration:
         return jsonify({'error': 'City and duration are required parameters'}), 400
