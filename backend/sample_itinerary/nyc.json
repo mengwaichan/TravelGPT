@@ -1,0 +1,50 @@
+{
+  "city": "New York City",
+  "days": [
+    {
+      "day": 1,
+      "locations": [
+        {"name": "Central Park", "activity": "Stroll and Relax", "transport": "Walk"},
+        {"name": "Times Square", "activity": "Sightseeing", "transport": "Transit"},
+        {"name": "The Metropolitan Museum of Art", "activity": "Museum Visit", "transport": "Transit"},
+        {"name": "Rockefeller Center", "activity": "Observation Deck", "transport": "Walk"}
+      ]
+    },
+    {
+      "day": 2,
+      "locations": [
+        {"name": "Statue of Liberty", "activity": "Ferry Tour", "transport": "Transit"},
+        {"name": "Ellis Island", "activity": "Historical Visit", "transport": "Transit"},
+        {"name": "Battery Park", "activity": "Relaxation", "transport": "Walk"},
+        {"name": "Brooklyn Bridge", "activity": "Walk and Photography", "transport": "Walk"}
+      ]
+    },
+    {
+      "day": 3,
+      "locations": [
+        {"name": "Empire State Building", "activity": "Observation Deck", "transport": "Walk"},
+        {"name": "High Line", "activity": "Urban Park Walk", "transport": "Walk"},
+        {"name": "Chelsea Market", "activity": "Food and Shopping", "transport": "Walk"},
+        {"name": "Broadway Show", "activity": "Entertainment", "transport": "Transit"}
+      ]
+    },
+    {
+      "day": 4,
+      "locations": [
+        {"name": "Museum of Modern Art (MoMA)", "activity": "Art Exhibition", "transport": "Transit"},
+        {"name": "Grand Central Terminal", "activity": "Architectural Visit", "transport": "Walk"},
+        {"name": "Top of the Rock Observation Deck", "activity": "Panoramic Views", "transport": "Transit"},
+        {"name": "Chinatown", "activity": "Exploration and Dining", "transport": "Walk"}
+      ]
+    },
+    {
+      "day": 5,
+      "locations": [
+        {"name": "The 9/11 Memorial and Museum", "activity": "Historical Visit", "transport": "Transit"},
+        {"name": "One World Observatory", "activity": "Sky Deck Experience", "transport": "Transit"},
+        {"name": "Washington Square Park", "activity": "Relaxation", "transport": "Walk"},
+        {"name": "Greenwich Village", "activity": "Exploration", "transport": "Walk"}
+      ]
+    }
+  ]
+}
