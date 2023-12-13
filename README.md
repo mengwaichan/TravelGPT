@@ -24,7 +24,6 @@
 
 make sure to have `firebase_auth.json` and `.env` in your directory.
 
-
 ### To Start the API
 
     ```bash
