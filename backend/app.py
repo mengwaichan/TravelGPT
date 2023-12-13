@@ -1,4 +1,5 @@
 from flask import Flask
+import firebase_admin
 from firebase_admin import credentials
 from route_blueprint import route_blueprint
 from openai_blueprint import itinerary_blueprint

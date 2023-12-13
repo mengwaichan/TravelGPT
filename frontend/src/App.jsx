@@ -8,6 +8,7 @@ import Login from './components/Login'
 import Signup from './components/Signup'
 import Landing from './pages/Landing'
 import Home from './pages/Home'
+import CreateProfile from './components/CreateProfile'
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/" element={<Landing />} />
+        <Route path="/create-profile" element={<CreateProfile />} />
 
 
         {/* User Logged In = True : Routing, Component must be wrapped by Protected Route to ensure User Auth check */}

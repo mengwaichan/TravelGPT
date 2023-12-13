@@ -15,6 +15,9 @@ const Login = () => {
       try {
         const userCredential = await logIn(email, password);
         const user = userCredential.user; 
+        
+        console.log(db); // Check if db is defined
+        console.log(typeof db.collection);  // Check if db.collection is a function
 
         if (user) {
           const uid = user.uid;
@@ -24,9 +27,13 @@ const Login = () => {
     
           if (userDoc.exists) {
             // User exists in the 'users' collection, navigate to the home page
+            console.log('Navigating to /home');
+
             navigate('/home');
           } else {
             // User doesn't exist in the 'users' collection, navigate to the profile creation page
+            console.log('Navigating to /create-profile');
+
             navigate('/create-profile');
           }
         } else {

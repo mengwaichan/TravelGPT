@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useUserAuth } from '../components/UserAuth';
+import { useUserAuth } from './UserAuth';
 import axios from 'axios';
 
 const CreateProfile = () => {
