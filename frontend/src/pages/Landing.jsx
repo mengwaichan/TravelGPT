@@ -1,8 +1,13 @@
 import React from 'react'
+import Map from "../components/Map"
+import Itinerary from "../components/Itinerary"
 
 const Landing = () => {
   return (
-    <div>Landing</div>
+    <div>
+      <Itinerary />
+      <Map />
+    </div>
   )
 }
 

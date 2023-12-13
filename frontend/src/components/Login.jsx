@@ -4,8 +4,6 @@ import { useNavigate, Link } from "react-router-dom"
 import { db } from '../firebase'
 import { doc, getDoc } from 'firebase/firestore'
 
-
-
 const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")

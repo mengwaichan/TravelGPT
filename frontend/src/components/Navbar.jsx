@@ -42,8 +42,8 @@ const Navbar = () => {
             {user ? (
               <>
                 <li>
-                  <Link to="/map" onClick={closeMenu}>
-                    Map
+                  <Link to="/Home" onClick={closeMenu}>
+                    Home
                   </Link>
                 </li>
                 <li>
@@ -54,6 +54,11 @@ const Navbar = () => {
                 <li>
                   <Link to="/about" onClick={closeMenu}>
                     About
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/settings" onClick={closeMenu}>
+                    Settings
                   </Link>
                 </li>
                 <li>
