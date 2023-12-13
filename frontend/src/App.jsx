@@ -9,10 +9,12 @@ import Signup from './components/Signup'
 import Landing from './pages/Landing'
 import Home from './pages/Home'
 import CreateProfile from './components/CreateProfile'
+import Navbar from './components/Navbar'
 
 const App = () => {
   return (
     <UserAuthContextProvider>
+      <Navbar />
       <Routes>
         {/* User Logged In = False : Routing */}
         <Route path="/login" element={<Login />} />

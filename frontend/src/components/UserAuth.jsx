@@ -13,16 +13,18 @@ const userAuthContext = createContext()
 
 export function UserAuthContextProvider({ children }) {
   const [user, setUser] = useState({}) 
-  const [uid, setUid] = useState(null);
+  const [uid, setUid] = useState(null)
+  const [email, setEmail] = useState(null)
 
 
   function logIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
       const loggedInUser = userCredential.user;
-      setUid(loggedInUser.uid);
-      return userCredential;
-    });
+      setUid(loggedInUser.uid)
+      setEmail(loggedInUser.email)
+      return userCredential
+    })
   }
 
 
@@ -30,23 +32,24 @@ export function UserAuthContextProvider({ children }) {
     return createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
       const newUser = userCredential.user;
-      setUid(newUser.uid);
-      return userCredential;
-    });
+      setUid(newUser.uid)
+      setEmail(loggedInUser.email)
+      return userCredential
+    })
   }
 
   {/* Call to logout current user */}
   function logOut() {
-    setUid(null);
-    return signOut(auth);
+    setUid(null)
+    return signOut(auth)
   }
 
   {/* Ensures user stays logged in until logged out (cookies keeps logged in unless logged out) */}
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
-      setUser(currentuser);
+      setUser(currentuser)
       if (currentUser) {
-        setUid(currentUser.uid);
+        setUid(currentUser.uid)
       }
     })
     return () => {

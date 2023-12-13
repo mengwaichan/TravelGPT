@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom"
 import axios from 'axios';
 
 const CreateProfile = () => {
-  const { uid } = useUserAuth();
+  const { uid, email } = useUserAuth();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [dob, setDob] = useState('');
@@ -24,7 +24,8 @@ const CreateProfile = () => {
       // Make an API call to create user profile
       const response = await axios.post(
         'http://127.0.0.1:5000/profile/create_profile',
-        {
+        { 
+          email : email,
           first_name : firstName,
           last_name : lastName,
           dob : dob,
