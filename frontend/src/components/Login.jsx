@@ -14,39 +14,39 @@ const Login = () => {
     const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
-      e.preventDefault();
+      e.preventDefault()
       try {
-        const userCredential = await logIn(email, password);
+        const userCredential = await logIn(email, password)
         const user = userCredential.user; 
 
         if (user) {
-          const uid = user.email;
-          console.log('User UID:', uid);
+          const uid = user.uid
+          console.log('User UID:', uid)
     
-          const docRef = doc(db, "users", uid);
-          const docSnap = await getDoc(docRef);
+          const docRef = doc(db, "users", uid)
+          const docSnap = await getDoc(docRef)
 
           if (docSnap.exists()) {
             // User exists in the 'users' collection, navigate to the home page
-            console.log('Navigating to /home');
+            console.log('Navigating to /home')
 
             navigate('/home');
           } else {
             // User doesn't exist in the 'users' collection, navigate to the profile creation page
-            console.log('Navigating to /create-profile');
+            console.log('Navigating to /create-profile')
 
-            navigate('/create-profile');
+            navigate('/create-profile')
           }
           
         } else {
-          throw new Error('User not found');
+          throw new Error('User not found')
         }
     
       } catch (err) {
-        setError(err.message);
-        console.error(err);
+        setError(err.message)
+        console.error(err)
       }
-    };
+    }
     
   return (
     <div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useUserAuth } from './UserAuth';
+import { useNavigate, Link } from "react-router-dom"
 import axios from 'axios';
 
 const CreateProfile = () => {
@@ -8,6 +9,7 @@ const CreateProfile = () => {
   const [lastName, setLastName] = useState('');
   const [dob, setDob] = useState('');
   const [error, setError] = useState(null);
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,6 +39,8 @@ const CreateProfile = () => {
 
       console.log('Profile created:', response.data);
       // You can handle success or navigate the user to another page here
+
+      navigate('/home');
     } catch (error) {
       setError('Error creating profile. Please try again.');
       console.error(error);
