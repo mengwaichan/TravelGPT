@@ -23,13 +23,14 @@ const CreateProfile = () => {
       const response = await axios.post(
         'http://127.0.0.1:5000/profile/create_profile',
         {
-          firstName,
-          lastName,
-          dob,
+          first_name : firstName,
+          last_name : lastName,
+          dob : dob,
         },
         {
           headers: {
-            Authorization: `${uid}`, // Include UID in the Authorization header
+            Authorization: `${uid}`,
+            'Content-Type': 'application/json',
           },
         }
       );
