@@ -38,3 +38,13 @@ curl -X POST -H "Content-Type: application/json" -d '{"name": "LocationName"}' h
 ```bash
 curl -X POST -H "Content-Type: application/json" -d '{"origin_latitude": float, "origin_longitude": float, "destination_latitude": float, "destination_longitude": float, "transport": "walk"}' http://127.0.0.1:5000/route
 ```
+
+### Create Profile 
+```bash
+curl -X POST -H "Content-Type: application/json" -H "Authorization: UID" -d '{"email": "Email", "first_name":"FirstName","last_name": "LastName", "dob": "Day of Birth"}' http://127.0.0.1:5000/profile/create_profile
+```
+
+### Update Profile 
+```bash
+curl -X POST -H "Content-Type: application/json" -H "Authorization: UID" -d '{"email": "Email", "first_name":"FirstName","last_name": "LastName", "dob": "Day of Birth"}' http://127.0.0.1:5000/profile/update_profile
+```
