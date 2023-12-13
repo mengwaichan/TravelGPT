@@ -59,7 +59,7 @@ export function UserAuthContextProvider({ children }) {
 
   {/* Functions to use when importing Auth to other components */}
   return (
-    <userAuthContext.Provider value={{ user, uid, logIn, signUp, logOut }}> 
+    <userAuthContext.Provider value={{ user, uid, email, logIn, signUp, logOut }}> 
       {children}
     </userAuthContext.Provider>
   )

@@ -16,7 +16,6 @@
     env/Scripts/Activate
     ```
 
-
 3. Install dependencies:
 
     ```bash
@@ -27,9 +26,10 @@ make sure to have `firebase_auth.json` and `.env` in your directory.
 
 
 ### To Start the API
-```bash
-flask run
-```
+
+    ```bash
+    flask run
+    ```
 ### Itinerary API
 
 ```bash
@@ -56,3 +56,27 @@ curl -X POST -H "Content-Type: application/json" -H "Authorization: UID" -d '{"e
 ```bash
 curl -X POST -H "Content-Type: application/json" -H "Authorization: UID" -d '{"email": "Email", "first_name":"FirstName","last_name": "LastName", "dob": "Day of Birth"}' http://127.0.0.1:5000/profile/update_profile
 ```
+
+## Frontend
+
+### Installation
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/mengwaichan/TravelGPT.git
+    cd TravelGPT/frontend
+    ```
+
+2. Install dependencies:
+
+    ```bash
+    npm install
+    ```
+make sure to have `.env` in your directory.
+
+### To Start 
+
+    ```bash     
+    npm run dev
+    ```
