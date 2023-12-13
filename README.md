@@ -9,7 +9,15 @@
     cd TravelGPT/backend
     ```
 
-2. Install dependencies:
+2. Start Virtual Environment 
+
+    ```bash
+    python -m venv env
+    env/Scripts/Activate
+    ```
+
+
+3. Install dependencies:
 
     ```bash
     pip install -r requirements.txt
