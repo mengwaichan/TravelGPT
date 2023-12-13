@@ -2,6 +2,9 @@ import React, {useState} from 'react'
 import { useUserAuth } from "./UserAuth"
 import { useNavigate, Link } from "react-router-dom"
 import { db } from '../firebase'
+import { doc, getDoc } from 'firebase/firestore'
+
+
 
 const Login = () => {
     const [email, setEmail] = useState("")
@@ -15,17 +18,15 @@ const Login = () => {
       try {
         const userCredential = await logIn(email, password);
         const user = userCredential.user; 
-        
-        console.log(db); // Check if db is defined
-        console.log(typeof db.collection);  // Check if db.collection is a function
 
         if (user) {
-          const uid = user.uid;
+          const uid = user.email;
           console.log('User UID:', uid);
     
-          const userDoc = await db.collection('users').doc(uid).get();
-    
-          if (userDoc.exists) {
+          const docRef = doc(db, "users", uid);
+          const docSnap = await getDoc(docRef);
+
+          if (docSnap.exists()) {
             // User exists in the 'users' collection, navigate to the home page
             console.log('Navigating to /home');
 
@@ -36,6 +37,7 @@ const Login = () => {
 
             navigate('/create-profile');
           }
+          
         } else {
           throw new Error('User not found');
         }
