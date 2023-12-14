@@ -19,7 +19,6 @@ const Login = () => {
 
         if (user) {
           const uid = user.uid
-          console.log('User UID:', uid)
     
           const docRef = doc(db, "users", uid)
           const docSnap = await getDoc(docRef)
