@@ -26,9 +26,9 @@ make sure to have `firebase_auth.json` and `.env` in your directory.
 
 ### To Start the API
 
-    ```bash
-    flask run
-    ```
+```bash
+flask run
+```
 ### Itinerary API
 
 ```bash
@@ -76,6 +76,6 @@ make sure to have `.env` in your directory.
 
 ### To Start 
 
-    ```bash     
-    npm run dev
-    ```
+```bash     
+npm run dev
+```
