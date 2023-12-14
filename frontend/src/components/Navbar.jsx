@@ -24,70 +24,83 @@ const Navbar = () => {
     setIsMenuOpen(false);
   };
 
-  return (
-    <nav>
-      <div>
+  {/* <div>
         <Link to="/about">
-          <img src={logo} alt="Logo" />
+          <img class="h-auto max-w-xs" src={logo} alt="Logo" />
           <span>TravelGPT</span>
         </Link>
-        <button
-          type="button"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          <img src={menu} alt="Menu" />
-        </button>
-        <div className={`${isMenuOpen ? "" : "hidden"}`}>
-          <ul>
-            {user ? (
-              <>
-                <li>
-                  <Link to="/Home" onClick={closeMenu}>
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/contact" onClick={closeMenu}>
-                    Contact
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/about" onClick={closeMenu}>
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/settings" onClick={closeMenu}>
-                    Settings
-                  </Link>
-                </li>
-                <li>
-                  <button onClick={handleLogOut}>Log out</button>
-                </li>
-              </>
-            ) : (
-              <>
-                <li>
-                  <Link to="/contact" onClick={closeMenu}>
-                    Contact
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/login" onClick={closeMenu}>
-                    Login
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/signup" onClick={closeMenu}>
-                    Sign Up
-                  </Link>
-                </li>
-              </>
-            )}
-          </ul>
+
+        </div> */}
+  return (
+    <div dir="rtl" class="relative h-20">
+      <nav class="absolute top-0 inset-x-0 bg-white border-gray-200 dark:bg-gray-900">
+        <div class="table-row-group">
+          <div class="table-row">
+          <div class="table-cell">
+            <button
+              type="button"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <img class="h-auto max-w-xs" src={menu} alt="Menu" />
+            </button>
+          </div>
+          <div className={`${isMenuOpen ? "" : "hidden"}`} class="table-cell right-2">
+            {/* md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"*/}
+            <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-5 rtl:space-x-reverse">
+              {user ? (
+                <>
+                  <li>
+                    <Link to="/Home" onClick={closeMenu}>
+                      Home
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/contact" onClick={closeMenu}>
+                      Contact
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/about" onClick={closeMenu}>
+                      About
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/settings" onClick={closeMenu}>
+                      Settings
+                    </Link>
+                  </li>
+                  <li>
+                    <button onClick={handleLogOut}>Log out</button>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link to="/contact" onClick={closeMenu}>
+                      Contact
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/login" onClick={closeMenu}>
+                      Login
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/signup" onClick={closeMenu}>
+                      Sign Up
+                    </Link>
+                  </li>
+                </>
+              )}
+            </ul>
+            </div>
+          </div>
+
+
         </div>
-      </div>
-    </nav>
+
+      </nav >
+    </div >
   );
 };
 
