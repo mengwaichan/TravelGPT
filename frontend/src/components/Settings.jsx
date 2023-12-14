@@ -9,25 +9,22 @@ const Settings = () => {
   const { uid } = useUserAuth();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [dob, setDob] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserProfile = async (e) => {
-        
-        try {
-            
-            const docRef = doc(db, "users", uid)
-            const docSnap = await getDoc(docRef)
+   
+        const docRef = doc(db, "users", uid)
+        const docSnap = await getDoc(docRef)
 
-            const userData = docSnap.data();
-            setFirstName(userData.first_name || '');
-            setLastName(userData.last_name || '');
-            }
-        catch (error) {
-            setError('Error fetching user profile. Please try again.');
-            console.error(error);
-        } 
+        const userData = docSnap.data();
+        setFirstName(userData.first_name || '');
+        setLastName(userData.last_name || '');
+        setDob(userData.dob);
+        setEmail(userData.email);
     }
 
     fetchUserProfile();
@@ -70,6 +67,8 @@ const Settings = () => {
   return (
     <div>
       <h1>Update Profile</h1>
+      <p>Email: {email}</p>
+      <p>Date of Birth: {dob}</p>
       <form onSubmit={handleSubmit}>
         <label>
           First Name:
