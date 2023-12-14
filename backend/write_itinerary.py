@@ -1,10 +1,13 @@
 from firebase_admin import firestore
+from datetime import datetime
 
 def write_itinerary(uid, itinerary_data):
- 
+    
+    itinerary_data['timestamp'] = firestore.SERVER_TIMESTAMP
+
     user_ref = firestore.client().collection('users').document(uid)
 
     itineraries_ref = user_ref.collection('itineraries')
 
-    new_itinerary_ref = itineraries_ref.add(itinerary_data)
+    itineraries_ref.add(itinerary_data)
 

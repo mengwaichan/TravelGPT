@@ -27,6 +27,7 @@ def get_itinerary():
     
     itinerary_data = json.loads(openai_response.choices[0].message.content)
     
+    response_data = jsonify(itinerary_data)
     write_itinerary(user_id, itinerary_data)
-    
-    return jsonify(itinerary_data)
+    print(response_data)
+    return response_data

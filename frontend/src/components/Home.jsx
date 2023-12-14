@@ -3,7 +3,7 @@ import { useUserAuth } from "./UserAuth";
 import { useNavigate, Link } from "react-router-dom";
 import axios from 'axios'; // Import axios for making HTTP requests
 import { db } from '../firebase';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, query, limit } from 'firebase/firestore';
 
 const Home = () => {
   const { uid } = useUserAuth();
@@ -19,7 +19,10 @@ const Home = () => {
   const fetchRecentlyViewedData = async () => {
     // Assuming the itineraries are stored under /users/UID/itineraries
     const itinerariesCollectionRef = collection(db, `users/${uid}/itineraries`);
-    const itinerariesSnapshot = await getDocs(itinerariesCollectionRef);
+
+    const q1 = query(itinerariesCollectionRef, limit(3));
+
+    const itinerariesSnapshot = await getDocs(q1);
     const recentlyViewedData = [];
     itinerariesSnapshot.forEach((doc) => {
       recentlyViewedData.push(doc.data());
@@ -42,10 +45,10 @@ const Home = () => {
   const handleSubmit = async () => {
     try {
         console.log('Submitting form with data:', { city, duration });
-
+        
       // Make a POST request to your API
       const response = await axios.post(
-        'http://127.0.0.1:5000/itinerary',
+        'http://127.0.0.1:5000/itinerary/',
         {
           city: city,
           duration: parseInt(duration), // Assuming duration should be a number
@@ -55,7 +58,7 @@ const Home = () => {
             Authorization: `${uid}`,
             'Content-Type': 'application/json'
           },
-        }
+        },
       );
 
       // Handle the response as needed
