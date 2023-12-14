@@ -30,7 +30,7 @@ const App = () => {
         
         {/* User Logged In = True : Routing, Component must be wrapped by Protected Route to ensure User Auth check */}
         <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-        <Route path="/itinerary" element={<ProtectedRoute><Travel/></ProtectedRoute>}  />
+        <Route path="/travel" element={<ProtectedRoute><Travel/></ProtectedRoute>}  />
         <Route path="/create-profile" element={<CreateProfile />} />
         <Route path="/settings" element={<Settings/>} />
       </Routes>
