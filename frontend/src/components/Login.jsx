@@ -3,6 +3,8 @@ import { useUserAuth } from "./UserAuth"
 import { useNavigate, Link } from "react-router-dom"
 import { db } from '../firebase'
 import { doc, getDoc } from 'firebase/firestore'
+import logo from "../assets/travel.png";
+import menu from "../assets/menu.png";
 
 const Login = () => {
     const [email, setEmail] = useState("")
@@ -47,13 +49,57 @@ const Login = () => {
     
   return (
     <div>
-        <h1>Login</h1>
-        <form onSubmit={handleSubmit}>
-            <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} name="username"/>
-            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} name="password"/>
-            <button type="submit">Login</button>
-            <Link to="/signup">Go to Signup Page</Link>
-        </form>
+         <div class="flex justify-center items-center text-center">
+        <Link to="/about">
+          <img  class="object-none" src={logo} alt="Logo" />
+          <span>TravelGPT</span>
+        </Link>
+      </div>
+    <div className="text-center">
+
+      <h1>Login</h1>
+      <form onSubmit={handleSubmit}>
+        <div>
+        <input
+          type="email"
+          className="text-sm w-700 px-4 py-2 border border-solid border-gray-300 rounded"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          name="username"
+        />
+        </div>
+
+
+        <div>
+          <input
+            type="password"
+            className="text-sm w-700 px-4 py-2 border border-solid border-gray-300 rounded mt-4"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider"
+        >
+          Login
+        </button>
+
+        <div className="mt-4 font-semibold text-sm text-slate-500 text-center">
+          Don&apos;t have an account?{" "}
+          <a
+            className="text-red-600 hover:underline hover:underline-offset-4"
+            href="#"
+          >
+            <Link to="/signup">Register</Link>
+          </a>
+        </div>
+      </form>
+    </div>
     </div>
   )
 }
