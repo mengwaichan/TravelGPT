@@ -14,7 +14,7 @@ import Settings from './components/Settings'
 {/* pages */}
 import AboutUs from './pages/AboutUs'
 import Contact from './pages/Contact'
-import Landing from './pages/Landing'
+import Travel from './pages/Travel'
 
 const App = () => {
   return (
@@ -30,7 +30,7 @@ const App = () => {
         
         {/* User Logged In = True : Routing, Component must be wrapped by Protected Route to ensure User Auth check */}
         <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-        <Route path="/itinerary" element={<ProtectedRoute><Landing/></ProtectedRoute>}  />
+        <Route path="/itinerary" element={<ProtectedRoute><Travel/></ProtectedRoute>}  />
         <Route path="/create-profile" element={<CreateProfile />} />
         <Route path="/settings" element={<Settings/>} />
       </Routes>

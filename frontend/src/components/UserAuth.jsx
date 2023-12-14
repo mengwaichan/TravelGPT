@@ -33,7 +33,7 @@ export function UserAuthContextProvider({ children }) {
       .then((userCredential) => {
       const newUser = userCredential.user;
       setUid(newUser.uid)
-      setEmail(loggedInUser.email)
+      setEmail(newUser.email)
       return userCredential
     })
   }
@@ -48,8 +48,8 @@ export function UserAuthContextProvider({ children }) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
       setUser(currentuser)
-      if (currentUser) {
-        setUid(currentUser.uid)
+      if (currentuser) {
+        setUid(currentuser.uid)
       }
     })
     return () => {
