@@ -7,28 +7,6 @@ itinerary_blueprint = Blueprint('itinerary', __name__)
 
 @itinerary_blueprint.route('/',methods = ["POST"])
 def get_itinerary():
-    """
-    Generate and store an itinerary based on user input.
-
-    This endpoint takes a JSON payload containing information about the city, duration,
-    and user ID from the request. It uses the OpenAI GPT-3.5 model to generate an itinerary
-    based on a predefined prompt. The generated itinerary is then stored in Firebase.
-
-    Parameters:
-        - city (str): The city for which the itinerary is generated.
-        - duration (int): The duration of the itinerary in days.
-        - UID (str): User ID used for authentication.
-
-    Returns:
-        - JSON: The generated itinerary in JSON format.
-
-    Raises:
-        - HTTP 400: If the required parameters (city or duration) are missing.
-        - Any exceptions raised during the process.
-
-    Usage:
-        - Send a POST request with JSON payload containing city, duration, and UID.
-    """
     client = OpenAI()
     data = request.get_json()
     city = data.get('city')

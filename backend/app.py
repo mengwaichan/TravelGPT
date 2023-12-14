@@ -8,7 +8,7 @@ from geocoding_blueprint import geocoding_blueprint
 from user_profile_blueprint import profile_blueprint
 
 app = Flask(__name__)
-CORS(app)
+CORS(app) 
 
 cred = credentials.Certificate('./firebase_auth.json')
 firebase_admin.initialize_app(cred)

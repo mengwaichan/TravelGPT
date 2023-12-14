@@ -2,7 +2,7 @@ import React from 'react'
 import Map from "../components/Map"
 import Itinerary from "../components/Itinerary"
 
-const Landing = () => {
+const Travel = () => {
   return (
     <div>
       <Itinerary />
@@ -11,4 +11,4 @@ const Landing = () => {
   )
 }
 
-export default Landing
+export default Travel

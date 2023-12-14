@@ -33,7 +33,7 @@ export function UserAuthContextProvider({ children }) {
       .then((userCredential) => {
       const newUser = userCredential.user;
       setUid(newUser.uid)
-      setEmail(loggedInUser.email)
+      setEmail(newUser.email)
       return userCredential
     })
   }
