@@ -16,6 +16,8 @@ const Home = () => {
   const [recommendedData, setRecommendedData] = useState([]);
   const [selectedData, setSelectedData] = useState(null);
   const [geocodingData, setGeocodingData] = useState({});
+  const [loading, setLoading] = useState(false);
+
 
   const fetchRecentlyViewedData = async () => {
     const itinerariesCollectionRef = collection(db, `users/${uid}/itineraries`);
@@ -39,6 +41,7 @@ const Home = () => {
 
   const handleSubmit = async () => {
     try {
+      setLoading(true);
       console.log('Submitting form with data:', { city, duration });
 
       const response = await axios.post(
@@ -58,8 +61,8 @@ const Home = () => {
       console.log('API response:', response);
 
       setSelectedData(response.data);
-    } catch (error) {
-      console.error('Error submitting form:', error);
+    } finally {
+      setLoading(true); // Set loading to false when API response is received (success or error)
     }
   };
 
@@ -131,7 +134,9 @@ const Home = () => {
         <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
           <input type="text" placeholder="City" value={city} onChange={handleCityChange} />
           <input type="number" placeholder="Duration" value={duration} onChange={handleDurationChange} />
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={loading}>
+            {loading ? 'Loading...' : 'Submit'}
+          </button>
         </form>
       </div>
 
