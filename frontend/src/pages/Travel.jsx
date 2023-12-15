@@ -9,8 +9,6 @@ const Travel = () => {
   const location = useLocation();
   const itineraryData = location.state && location.state.selectedData;
 
-  console.log(itineraryData);
-
   useEffect(() => {
     const fetchGeocodingData = async () => {
       try {
@@ -39,7 +37,7 @@ const Travel = () => {
 
   return (
     <div>
-      <Itinerary itinerary={itineraryData} />
+      <Itinerary itineraryData={itineraryData} />
       <Map geocodingData={geocodingData}  />
     </div>
   );
