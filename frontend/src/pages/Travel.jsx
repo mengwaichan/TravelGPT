@@ -12,8 +12,7 @@ const Travel = () => {
   
   return (
     <div>
-      <Itinerary itineraryData={itineraryData} />
-      <Map geocodingData={geocodingData}  />
+      <Itinerary itineraryData={itineraryData} geocodingData = {geocodingData} />
     </div>
   );
 };
