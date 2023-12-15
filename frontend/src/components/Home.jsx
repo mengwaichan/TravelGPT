@@ -15,6 +15,7 @@ const Home = () => {
   const [recentlyViewedData, setRecentlyViewedData] = useState([]);
   const [recommendedData, setRecommendedData] = useState([]);
   const [selectedData, setSelectedData] = useState(null);
+  const [geocodingData, setGeocodingData] = useState({});
 
   const fetchRecentlyViewedData = async () => {
     const itinerariesCollectionRef = collection(db, `users/${uid}/itineraries`);
@@ -80,15 +81,41 @@ const Home = () => {
   }, [uid]);
 
   useEffect(() => {
-    if (selectedData) {
-      navigate('/travel', { state: { selectedData } });
+    if (selectedData && geocodingData) {
+      navigate('/travel', { state: { selectedData, geocodingData } });
     }
-  }, [selectedData]);
+  }, [geocodingData]);
+
+
+  useEffect(() => {
+    const fetchGeocodingData = async () => {
+      try {
+        const cityName = selectedData.city;
+
+        const response = await axios.post(
+          'http://127.0.0.1:5000/geocoding/',
+          { name: cityName },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+
+        setGeocodingData(response.data);
+
+      } catch (error) {
+        console.error('Error fetching geocoding data:', error);
+      }
+    };
+
+    fetchGeocodingData();
+  }, [selectedData]); 
 
   return (
     <div>
       <div>
-        <div>Recently Viewed</div>
+        <div><strong>Recently Viewed</strong></div>
         {recentlyViewedData.map((item, index) => (
           <div key={index}>
             <button onClick={() => {
@@ -102,7 +129,7 @@ const Home = () => {
       </div>
 
       <div>
-        <div>Travel</div>
+        <div><strong>Travel</strong></div>
         <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
           <input type="text" placeholder="City" value={city} onChange={handleCityChange} />
           <input type="number" placeholder="Duration" value={duration} onChange={handleDurationChange} />
@@ -110,7 +137,7 @@ const Home = () => {
         </form>
       </div>
 
-      <div>Recommended</div>
+      <div><strong>Recommended</strong></div>
       {recommendedData.map((item, index) => (
         <div key={index}>
           <button onClick={() => {
