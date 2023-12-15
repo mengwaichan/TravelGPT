@@ -27,7 +27,6 @@ const Home = () => {
       recentlyViewedData.push(doc.data());
     });
     setRecentlyViewedData(recentlyViewedData);
-    console.log(recentlyViewedData);
   };
 
   const handleCityChange = (event) => {
@@ -72,7 +71,6 @@ const Home = () => {
       recommendData.push(doc.data());
     });
     setRecommendedData(recommendData);
-    console.log(recommendData);
   };
 
   useEffect(() => {

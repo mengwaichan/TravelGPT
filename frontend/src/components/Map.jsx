@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import {GoogleMap, Marker, useJsApiLoader, DirectionsRenderer } from '@react-google-maps/api'
+import {GoogleMap, Marker, useJsApiLoader, Polyline } from '@react-google-maps/api'
 
 
 const Map = ( { geocodingData, markerLocation, directionData }) => {
@@ -9,18 +9,15 @@ const Map = ( { geocodingData, markerLocation, directionData }) => {
       });
     const defaultCenter = { lat: 40.81792206720871, lng: -73.94995404366331}
     
-    console.log("marker", markerLocation)
-    console.log("geo", geocodingData)
-    console.log("dir", directionData)
+    console.log("dir",directionData.routes)
 
-    const center =
-    markerLocation && markerLocation.lat !== null && markerLocation.lng !== null
+    const center = 
+        (markerLocation.lat && markerLocation.lng)
         ? { lat: markerLocation.lat, lng: markerLocation.lng }
-        : geocodingData
+        : (geocodingData && geocodingData.lat && geocodingData.lng)
         ? { lat: geocodingData.lat, lng: geocodingData.lng }
         : defaultCenter;
-
-    console.log(center)
+        
     const containerStyle = { width: "100%", height: "550px"}
     
     const onLoad = (map) => {
@@ -43,41 +40,7 @@ const Map = ( { geocodingData, markerLocation, directionData }) => {
         >
           { /* Child components, such as markers, info windows, etc. */ }
           {markerLocation && <Marker position={markerLocation} />}
-          {directionData && directionData.prev && directionData.curr && directionData.transport && (
-    <DirectionsRenderer
-        directions={{
-            routes: [
-                {
-                    legs: [
-                        {
-                            start_location: directionData.prev && {
-                                lat: directionData.prev.lat,
-                                lng: directionData.prev.lng,
-                            },
-                            end_location: directionData.curr && {
-                                lat: directionData.curr.lat,
-                                lng: directionData.curr.lng,
-                            },
-                            steps: [
-                                {
-                                    travel_mode: directionData.transport.toUpperCase(),
-                                    start_location: directionData.prev && {
-                                        lat: directionData.prev.lat,
-                                        lng: directionData.prev.lng,
-                                    },
-                                    end_location: directionData.curr && {
-                                        lat: directionData.curr.lat,
-                                        lng: directionData.curr.lng,
-                                    },
-                                },
-                            ],
-                        },
-                    ],
-                },
-            ],
-        }}
-    />
-)}
+          
           <></>
         </GoogleMap>
     ) 

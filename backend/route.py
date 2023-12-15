@@ -6,21 +6,35 @@ load_dotenv()
 
 class Route:
     def __init__(self):
-        self.api_url = "https://maps.googleapis.com/maps/api/directions/json"  # Updated API endpoint
+        self.api_url = "https://routes.googleapis.com/directions/v2:computeRoutes"
         self.api_key = os.getenv("MAP_API_KEY")
-        self.headers = {"Content-Type": "application/json"}
+        self.headers = {"Content-Type": "application/json", "X-Goog-Api-Key": self.api_key, "X-Goog-FieldMask": "routes.duration,routes.distanceMeters,routes.polyline.encodedPolyline"}
 
-    def fetch_directions(self, origin_latitude, origin_longitude, destination_latitude, destination_longitude, travel_mode="transit"):
-        directions_request = {
-            "origin": f"{origin_latitude},{origin_longitude}",
-            "destination": f"{destination_latitude},{destination_longitude}",
-            "mode": travel_mode,
-            "key": self.api_key,
-            "language": "en_US"
-        }
-
-        response = requests.get(self.api_url, headers=self.headers, params=directions_request)
+    def fetch_directions(self, origin_latitude, origin_longitude, destination_latitude, destination_longitude, travel_mode):
+        route_request = {"origin": {
+                            "location":{
+                                "latLng":{
+                                    "latitude": origin_latitude,
+                                    "longitude": origin_longitude,
+                                    }
+                                }
+                            },
+                         "destination": {
+                                "location":{
+                                    "latLng":{
+                                        "latitude": destination_latitude,
+                                        "longitude": destination_longitude
+                                        }
+                                }
+                            },
+                         "travelMode": travel_mode,
+                         "languageCode": "en_US",
+                         "units": "IMPERIAL",
+                }
+          
+        response = requests.post(self.api_url,headers=self.headers, json=route_request)  
         return response.json()
+
 
 
 #fetch_directions = Route()

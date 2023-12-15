@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useUserAuth } from "./UserAuth";
+import axios from 'axios';
 import Map from "./Map";
 import directionsButton from "../assets/direction.png"; 
 import markerIcon from "../assets/marker.png"; 
@@ -19,57 +20,39 @@ const Itinerary = ({ itineraryData, geocodingData }) => {
         setMarkerLocation(marker || {})
     }
 
-    const handleDirectionsClick = (location, prevLocation) => {
+    const handleDirectionsClick = async(location, prevLocation) => {
         try {
-            const currentLocationGeocode = getGeocode(location.name);
-            const prevLocationGeocode = prevLocation ? getGeocode(prevLocation.name) : null;
+            const currentLocationGeocode = await getGeocode(location.name);
+            const prevLocationGeocode = prevLocation ? await getGeocode(prevLocation.name) : null;
     
             setCurrLocation(currentLocationGeocode || {});
             setPrevLocation(prevLocationGeocode || {});
-    
+            setMarkerLocation(currentLocationGeocode);
+
             if (currentLocationGeocode && prevLocationGeocode) {
                 const transportType = location.transport || 'walk';
     
-                // Instead of fetching, directly create an object with the required data
-                const routeData = {
-                    prev: {
-                        lat: prevLocationGeocode.lat,
-                        lng: prevLocationGeocode.lng,
-                    },
-                    curr: {
-                        lat: currentLocationGeocode.lat,
-                        lng: currentLocationGeocode.lng,
-                    },
-                    transport: transportType,
-                };
+                const routeData = await getRouteData(prevLocationGeocode, currentLocationGeocode, transportType);
     
-                // Add logic to use the route data, e.g., display it on the map
                 if (routeData) {
-                    // Handle the route data
-                    // For example, update the state or call a function to display the route on the map
-                    setDirection(routeData); // Assuming you have a state variable for directionData
+                    console.log('Route data:', routeData);
+                    setDirection(routeData);
                 }
             }
         } catch (error) {
             console.error('Error during click event:', error);
         }
-    };    
+    };
 
     const getGeocode = async (locationName) => {
         try {
-            // Make a POST request to your geocoding API endpoint
-            const response = await fetch('http://127.0.0.1:5000/geocoding/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ name: locationName }),
+            // Make a POST request to your geocoding API endpoint using Axios
+            const response = await axios.post('http://127.0.0.1:5000/geocoding/', {
+                name: locationName,
             });
-
-            if (response.ok) {
-                const data = await response.json();
-                const { lat, lng } = data;
-
+    
+            if (response.status === 200) {
+                const { lat, lng } = response.data;
                 return { lat, lng };
             } else {
                 console.error("Geocoding request failed");
@@ -80,7 +63,32 @@ const Itinerary = ({ itineraryData, geocodingData }) => {
             return null;
         }
     };
+    
 
+    const getRouteData = async (origin, destination, transport) => {
+        try {
+            const routeData = {
+                origin_latitude: origin.lat,
+                origin_longitude: origin.lng,
+                destination_latitude: destination.lat,
+                destination_longitude: destination.lng,
+                transport,
+            };
+    
+            const response = await axios.post('http://127.0.0.1:5000/route/', routeData);
+    
+            if (response.status === 200) {
+                return response.data;
+            } else {
+                console.error('Route request failed');
+                return null;
+            }
+        } catch (error) {
+            console.error('Error during route request:', error);
+            return null;
+        }
+    };
+    
     return (
         <div>
             <h2>Itinerary</h2>
