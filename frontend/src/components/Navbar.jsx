@@ -32,21 +32,21 @@ const Navbar = () => {
 
         </div> */}
   return (
-    <div dir="rtl" class="relative h-20">
-      <nav class="absolute top-0 inset-x-0 bg-white border-gray-200 dark:bg-gray-900">
-        <div class="table-row-group">
-          <div class="table-row">
-          <div class="table-cell">
+    <div dir="rtl" className="relative h-20">
+      <nav className="absolute top-0 inset-x-0 bg-white border-gray-200 dark:bg-gray-900">
+        <div className="table-row-group">
+          <div className="table-row">
+          <div className="table-cell">
             <button
               type="button"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              <img class="h-auto max-w-xs" src={menu} alt="Menu" />
+              <img className="h-auto max-w-xs" src={menu} alt="Menu" />
             </button>
           </div>
-          <div className={`${isMenuOpen ? "" : "hidden"}`} class="table-cell right-2">
+          <div className={`${isMenuOpen ? "" : "hidden"} table-cell right-2`}>
             {/* md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"*/}
-            <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-5 rtl:space-x-reverse">
+            <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-5 rtl:space-x-reverse">
               {user ? (
                 <>
                   <li>

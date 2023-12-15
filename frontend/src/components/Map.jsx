@@ -32,7 +32,7 @@ const Map = ( { geocodingData }) => {
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={9}
+          zoom={11}
           onLoad={onLoad}
           onUnmount={onUnmount}
         >
