@@ -10,7 +10,6 @@ const Map = ( { geocodingData, markerLocation, directionData }) => {
       });
     const defaultCenter = { lat: 40.81792206720871, lng: -73.94995404366331}
 
-
     const center = 
         (markerLocation.lat && markerLocation.lng)
         ? { lat: markerLocation.lat, lng: markerLocation.lng }
@@ -18,7 +17,7 @@ const Map = ( { geocodingData, markerLocation, directionData }) => {
         ? { lat: geocodingData.lat, lng: geocodingData.lng }
         : defaultCenter;
         
-    const containerStyle = { width: "100%", height: "593px"}
+    const containerStyle = { width: "100%", height: "100%"}
     
     const onLoad = (map) => {
         // Do something when the map is loaded
@@ -31,15 +30,6 @@ const Map = ( { geocodingData, markerLocation, directionData }) => {
       };
     
     const [polylineMarker, setPolylineMarker] = useState('0%')
-    const [polyline, setPolyline] = useState("")
-
-    useEffect(() => {
-      // Check if directionData is available and has the required properties
-      if (directionData && directionData.route && directionData.route.polyline) {
-        // Set the encodedPolyline to the polyline state
-        setPolyline(directionData.route.polyline.encodedPolyline);
-      }
-    }, [directionData]);
     
     useEffect(() => {
       // Check if directionData is available before setting up the interval
@@ -57,12 +47,11 @@ const Map = ( { geocodingData, markerLocation, directionData }) => {
     }, []);
     
 
-
     return isLoaded && directionData ? (
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={polyline !== "" ? 15 : 13}
+        zoom={directionData !== null ? 14.5 : 7.5}
         onLoad={onLoad}
         onUnmount={onUnmount}
         options={{
@@ -70,11 +59,11 @@ const Map = ( { geocodingData, markerLocation, directionData }) => {
           scaleControl: true,
           mapTypeControl: true,
           panControl: false,
-          zoomControl: true,
+          zoomControl: false,
           rotateControl: true,
           fullscreenControl: true,
           disableDefaultUI: true,
-          gestureHandling: "none",
+          gestureHandling: "auto",
           scrollwheel: true}}
       >
         {/* Child components, such as markers, info windows, etc. */}

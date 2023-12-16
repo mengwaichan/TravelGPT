@@ -174,7 +174,7 @@ const Itinerary = ({ itineraryData, geocodingData }) => {
       </div>
 
       {/* Right Section - Map */}
-      <div className="w-2/3 p-6 h-full overflow-hidden map-container">
+      <div className="w-4/5 h-full map-container">
           <Map
             geocodingData={geocodingData}
             markerLocation={markerLocation}
