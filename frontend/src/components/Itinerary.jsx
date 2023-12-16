@@ -7,12 +7,23 @@ import markerIcon from "../assets/marker.png";
 
 const Itinerary = ({ itineraryData, geocodingData }) => {
     const { user } = useUserAuth();
-    console.log("data", itineraryData);
 
     const [prevLocation, setPrevLocation] = useState({});
     const [currLocation, setCurrLocation] = useState({});
     const [markerLocation, setMarkerLocation] = useState({});
     const [direction, setDirection] = useState({});
+
+    const [openDays, setOpenDays] = useState([]);
+
+    const handleToggleDay = (index) => {
+        setOpenDays(prevOpenDays => {
+            const isOpen = prevOpenDays.includes(index);
+            return isOpen
+                ? prevOpenDays.filter(dayIndex => dayIndex !== index)
+                : [...prevOpenDays, index];
+        });
+    };
+
 
     const handleMarkersClick = async (location) => {
         const marker = await getGeocode(location.name)
@@ -35,7 +46,6 @@ const Itinerary = ({ itineraryData, geocodingData }) => {
                 const routeData = await getRouteData(prevLocationGeocode, currentLocationGeocode, transportType);
     
                 if (routeData) {
-                    console.log('Route data:', routeData);
                     setDirection(routeData);
                 }
             }
@@ -90,34 +100,57 @@ const Itinerary = ({ itineraryData, geocodingData }) => {
     };
     
     return (
-        <div>
-            <h2>Itinerary</h2>
-            <p><strong>{itineraryData.city}</strong></p>
-            {itineraryData.days.map((day, index) => (
-                <div key={index}>
-                    <h3>Day {day.day}</h3>
-                    <ul>
-                        {day.locations.map((location, locationIndex) => (
-                            <li key={locationIndex}>
-                                <button
-                                    style={{ display: 'flex', alignItems: 'center', border: 'none', background: 'none', cursor: 'pointer' }}
-                                    onClick={() => handleMarkersClick(location)}
-                                >
-                                    <img src={markerIcon} alt="Marker" style={{ width: '20px', height: '20px', marginRight: '5px' }} />
-                                    <strong>{location.name}</strong>
-                                </button>
-                                <p>Description: {location.activity}</p>
-                                <p>Transportation: {location.transport}<button onClick={() => handleDirectionsClick(location, day.locations[locationIndex - 1])}>
-                                    <img src={directionsButton} alt="Directions" style={{ width: '20px', height: '20px' }} />
-                                </button></p>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            ))}
-            <Map geocodingData = {geocodingData} markerLocation={markerLocation} directionData = {direction} />
+        <div style={{ display: 'flex', height: '100%' }}>
+            {/* Left Section - Itinerary */}
+            <div style={{ flex: 1, paddingRight: '20px', overflowY: 'auto', maxHeight: '100%' }}>
+                <h2>Itinerary</h2>
+                <p><strong>{itineraryData.city}</strong></p>
+                {itineraryData.days.map((day, index) => (
+                    <div key={index}>
+                        <h3>
+                            <button
+                                style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+                                onClick={() => handleToggleDay(index)}
+                            >
+                                {openDays.includes(index) ? '▼' : '►'} Day {day.day}
+                            </button>
+                        </h3>
+                        {openDays.includes(index) && (
+                            <ul>
+                                {day.locations.map((location, locationIndex) => (
+                                    <div key={locationIndex} className="location-container">
+                                        <li>
+                                            <button
+                                                style={{ display: 'flex', alignItems: 'center', border: 'none', background: 'none', cursor: 'pointer' }}
+                                                onClick={() => handleMarkersClick(location)}
+                                            >
+                                                <img src={markerIcon} alt="Marker" style={{ width: '20px', height: '20px', marginRight: '5px' }} />
+                                                <strong>{location.name}</strong>
+                                            </button>
+                                            <p>Description: {location.activity}</p>
+                                            <p>
+                                                Transportation: {location.transport}
+                                                <button onClick={() => handleDirectionsClick(location, day.locations[locationIndex - 1])}>
+                                                    <img src={directionsButton} alt="Directions" style={{ width: '20px', height: '20px' }} />
+                                                </button>
+                                            </p>
+                                        </li>
+                                    </div>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
+                ))}
+            </div>
+            
+            {/* Right Section - Map */}
+            <div style={{ flex: 2, height: '100%' }}>
+                <Map geocodingData={geocodingData} markerLocation={markerLocation} directionData={direction} />
+            </div>
         </div>
     );
+
+
 };
 
 export default Itinerary;

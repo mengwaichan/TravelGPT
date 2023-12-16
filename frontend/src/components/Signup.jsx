@@ -23,9 +23,9 @@ const Signup = () => {
 
       return (
         <div>
-          <div class="flex justify-center items-center text-center">
+          <div className="flex justify-center items-center text-center">
             <Link to="/about">
-              <img  class="object-none" src={logo} alt="Logo" />
+              <img  className="object-none" src={logo} alt="Logo" />
               <span>TravelGPT</span>
             </Link>
           </div>
@@ -65,12 +65,9 @@ const Signup = () => {
 
             <div className="mt-4 font-semibold text-sm text-slate-500 text-center">
               Already Registered?{" "}
-              <a
-                className="text-blue-600 hover:underline hover:underline-offset-4"
-                href="#"
-              >
-                <Link to="/login">Login</Link>
-              </a>
+              <Link to="/login" className="text-blue-600 hover:underline hover:underline-offset-4">
+                Login
+              </Link>
             </div>
           </form>
         </div>
