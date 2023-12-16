@@ -1,57 +1,56 @@
-import React, {useState} from 'react'
-import { useUserAuth } from "./UserAuth"
-import { useNavigate, Link } from "react-router-dom"
-import { db } from '../firebase'
-import { doc, getDoc } from 'firebase/firestore'
+import React, { useState } from "react";
+import { useUserAuth } from "./UserAuth";
+import { useNavigate, Link } from "react-router-dom";
+import { db } from "../firebase";
+import { doc, getDoc } from "firebase/firestore";
 import logo from "../assets/travel.png";
 import menu from "../assets/menu.png";
 
 const Login = () => {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const {logIn} = useUserAuth();
-    const [error, setError] = useState(null)
-    const navigate = useNavigate()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { logIn } = useUserAuth();
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
-      e.preventDefault()
-      try {
-        const userCredential = await logIn(email, password)
-        const user = userCredential.user; 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const userCredential = await logIn(email, password);
+      const user = userCredential.user;
 
-        if (user) {
-          const uid = user.uid
-    
-          const docRef = doc(db, "users", uid)
-          const docSnap = await getDoc(docRef)
+      if (user) {
+        const uid = user.uid;
+        console.log("User UID:", uid);
 
-          if (docSnap.exists()) {
-            // User exists in the 'users' collection, navigate to the home page
-            console.log('Navigating to /home')
+        const docRef = doc(db, "users", uid);
+        const docSnap = await getDoc(docRef);
 
-            navigate('/home');
-          } else {
-            // User doesn't exist in the 'users' collection, navigate to the profile creation page
-            console.log('Navigating to /create-profile')
+        if (docSnap.exists()) {
+          // User exists in the 'users' collection, navigate to the home page
+          console.log("Navigating to /home");
 
-            navigate('/create-profile')
-          }
-          
+          navigate("/home");
         } else {
-          throw new Error('User not found')
+          // User doesn't exist in the 'users' collection, navigate to the profile creation page
+          console.log("Navigating to /create-profile");
+
+          navigate("/create-profile");
         }
-    
-      } catch (err) {
-        setError(err.message)
-        console.error(err)
+      } else {
+        throw new Error("User not found");
       }
+    } catch (err) {
+      setError(err.message);
+      console.error(err);
     }
-    
+  };
+
   return (
     <div>
-         <div className="flex justify-center items-center text-center">
+      <div class="flex justify-center items-center text-center">
         <Link to="/about">
-          <img  className="object-none" src={logo} alt="Logo" />
+          <img  class="object-none" src={logo} alt="Logo" />
           <span>TravelGPT</span>
         </Link>
       </div>
@@ -91,17 +90,17 @@ const Login = () => {
 
         <div className="mt-4 font-semibold text-sm text-slate-500 text-center">
           Don&apos;t have an account?{" "}
-          <Link
-            to="/signup"
+          <a
             className="text-red-600 hover:underline hover:underline-offset-4"
+            href="#"
           >
-            Register
-          </Link>
+            <Link to="/signup">Register</Link>
+          </a>
         </div>
       </form>
     </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

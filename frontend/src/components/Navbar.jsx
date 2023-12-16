@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserAuth } from "./UserAuth";
-import logo from "../assets/travel.png";
+import logo from "../assets/travel-logo.png";
 import menu from "../assets/menu.png";
 
 const Navbar = () => {
@@ -71,9 +71,12 @@ const Navbar = () => {
               </ul>
             </div>
           </div>
+
+
         </div>
-      </nav>
-    </div>
+
+      </nav >
+    </div >
   );
 };
 
