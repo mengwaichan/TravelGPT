@@ -111,57 +111,39 @@ const Itinerary = ({ itineraryData, geocodingData }) => {
     <div className="flex h-screen overflow-hidden">
       {/* Left Section - Itinerary */}
       <div className="w-1/3 p-6 overflow-y-auto">
-        <h2 className="text-2xl font-semibold mb-4">Itinerary</h2>
-        <p className="mb-4">
-          <strong>{itineraryData.city}</strong>
-        </p>
+        <h2 className="text-2xl font-semibold mb-4">Trip to {itineraryData.city}</h2>
         {itineraryData.days.map((day, index) => (
           <div key={index} className="mb-6">
-            <h3 className="mb-2">
-              <button
-                className="bg-blue-500 text-white px-2 py-1 rounded cursor-pointer"
-                onClick={() => handleToggleDay(index)}
-              >
+            <h3 className="mb-2 cursor-pointer"
+                onClick={() => handleToggleDay(index)}>
                 {openDays.includes(index) ? "▼" : "►"} Day {day.day}
-              </button>
             </h3>
             {openDays.includes(index) && (
               <ul>
                 {day.locations.map((location, locationIndex) => (
-                  <li key={locationIndex} className="location-container mb-4">
+                  <li key={locationIndex} className="mb-4">
+                  <div className="location-container p-1 border rounded bg-emerald-50">
                     <button
                       className="flex items-center border-none bg-none cursor-pointer text-blue-500"
                       onClick={() => handleMarkersClick(location)}
                     >
-                      <img
-                        src={markerIcon}
-                        alt="Marker"
-                        className="w-5 h-5 mr-2"
-                      />
+                      <img src={markerIcon} alt="Marker" className="w-5 h-5 mr-2" />
                       <strong>{location.name}</strong>
                     </button>
-                    <p className="text-gray-600">
-                      Description: {location.activity}
-                    </p>
+                    <p className="text-gray-600">Description: {location.activity}</p>
                     <p className="text-gray-600">
                       Direction
                       <button
                         className="ml-0"
                         onClick={() =>
-                          handleDirectionsClick(
-                            location,
-                            day.locations[locationIndex - 1]
-                          )
+                          handleDirectionsClick(location, day.locations[locationIndex - 1])
                         }
                       >
-                        <img
-                          src={directionsButton}
-                          alt="Directions"
-                          className="w-5 h-5"
-                        />
+                        <img src={directionsButton} alt="Directions" className="w-5 h-5" />
                       </button>
                     </p>
-                  </li>
+                  </div>
+                </li>
                 ))}
               </ul>
             )}
