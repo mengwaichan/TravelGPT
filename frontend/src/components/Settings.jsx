@@ -73,9 +73,6 @@ const Settings = () => {
             className="mx-auto h-20 sm:h-32 md:h-40"
           />
         </div>
-        {/* <h1>Update Profile</h1>
-        <p>Email: {email}</p>
-        <p>Date of Birth: {dob}</p> */}
         <form onSubmit={handleSubmit} className="w-full max-w-sm">
           <div className="md:flex md:items-center mb-6">
             <div className="md:w-1/3">
@@ -91,7 +88,7 @@ const Settings = () => {
                 <input
                   type="text"
                   id="disabled_filled"
-                  class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-neutral-200 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-neutral-200 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
                   disabled
                 />
@@ -119,7 +116,7 @@ const Settings = () => {
                 <input
                   type="text"
                   id="disabled_filled"
-                  class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-neutral-200 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-neutral-200 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
                   disabled
                 />
@@ -147,7 +144,7 @@ const Settings = () => {
                 <input
                   type="text"
                   id="floating_filled"
-                  class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-neutral-100 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                 />
@@ -174,7 +171,7 @@ const Settings = () => {
                 <input
                   type="text"
                   id="floating_filled"
-                  class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-neutral-100 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                 />
