@@ -114,7 +114,7 @@ const Home = () => {
   }, [selectedData]); 
 
   return (
-    <div>
+    <div class = "flex justify-center items-center">
       <div>
         <div><strong>Recently Viewed</strong></div>
         {recentlyViewedData.map((item, index) => (
