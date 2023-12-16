@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserAuth } from "./UserAuth";
-import logo from "../assets/travel-logo.png";
+import logo from "../assets/travelgpt-logo.png";
 import menu from "../assets/menu.png";
 
 const Navbar = () => {
@@ -29,11 +29,10 @@ const Navbar = () => {
 
   // JSX structure
   return (
-    <nav class="bg-gray-200">
+    <nav class="bg-custom-color">
       <div class="flex flex-wrap justify-between items-center px-3 mx-auto">
         <a href="/about" class="flex items-center space-x-4 py-3 px-3">
-          <img class="h-8 w-8" src={logo} alt="Logo" />
-          <span>TravelGPT</span>
+          <img class="h-8" src={logo} alt="Logo" />
         </a>
         <div
           class={`${isMenuOpen ? "" : "hidden  w-full md:block md:w-auto"}`}
@@ -43,38 +42,38 @@ const Navbar = () => {
             {user ? (
               <>
                 <li>
-                  <Link to="/" onClick={closeMenu}>
+                  <Link to="/" onClick={closeMenu} style={{ color: "#3a4673" }}>
                     Search
                   </Link>
                 </li>
                 <li>
-                  <Link to="/contact" onClick={closeMenu}>
+                  <Link to="/contact" onClick={closeMenu} style={{ color: "#3a4673" }}>
                     Contact
                   </Link>
                 </li>
                 <li>
-                  <Link to="/settings" onClick={closeMenu}>
+                  <Link to="/settings" onClick={closeMenu} style={{ color: "#3a4673" }}>
                     Settings
                   </Link>
                 </li>
                 <li>
-                  <button onClick={handleLogOut}>Log out</button>
+                  <button onClick={handleLogOut} style={{ color: "#3a4673" }}>Log out</button>
                 </li>
               </>
             ) : (
               <>
                 <li>
-                  <Link to="/contact" onClick={closeMenu} class="p-3">
+                  <Link to="/contact" onClick={closeMenu} class="p-3" style={{ color: "#3a4673" }}>
                     Contact
                   </Link>
                 </li>
                 <li>
-                  <Link to="/login" onClick={closeMenu}>
+                  <Link to="/login" onClick={closeMenu} style={{ color: "#3a4673" }}>
                     Login
                   </Link>
                 </li>
                 <li>
-                  <Link to="/signup" onClick={closeMenu}>
+                  <Link to="/signup" onClick={closeMenu} style={{ color: "#3a4673" }}>
                     Sign Up
                   </Link>
                 </li>

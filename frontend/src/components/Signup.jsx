@@ -20,11 +20,10 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <div className = "mt-20">
       <div className="flex justify-center items-center text-center">
         <Link to="/about">
-          <img className="object-none" src={logo} alt="Logo" />
-          <span>TravelGPT</span>
+        <img class="object-contain h-auto w-40 " src={logo} alt="Logo" />
         </Link>
       </div>
       <div className="text-center">

@@ -17,3 +17,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.bg-custom-color {
+  background-color: #E8E7D5;
+}

@@ -45,12 +45,13 @@ const Login = () => {
     }
   };
 
+  const aspectRatio = 969 / 1500;
+
   return (
-    <div>
-      <div class="flex justify-center items-center text-center">
+    <div className = "mt-20">
+      <div className="flex justify-center items-center text-center">
         <Link to="/about">
-          <img class="object-none" src={logo} alt="Logo" />
-          <span>TravelGPT</span>
+          <img class="object-contain h-auto w-40 " src={logo} alt="Logo" />
         </Link>
       </div>
       <div className="text-center">
