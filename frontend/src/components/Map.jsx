@@ -18,7 +18,7 @@ const Map = ( { geocodingData, markerLocation, directionData }) => {
         ? { lat: geocodingData.lat, lng: geocodingData.lng }
         : defaultCenter;
         
-    const containerStyle = { width: "100%", height: "600px"}
+    const containerStyle = { width: "100%", height: "593px"}
     
     const onLoad = (map) => {
         // Do something when the map is loaded
@@ -65,6 +65,17 @@ const Map = ( { geocodingData, markerLocation, directionData }) => {
         zoom={polyline !== "" ? 15 : 13}
         onLoad={onLoad}
         onUnmount={onUnmount}
+        options={{
+          streetViewControl: false,
+          scaleControl: true,
+          mapTypeControl: true,
+          panControl: false,
+          zoomControl: true,
+          rotateControl: true,
+          fullscreenControl: true,
+          disableDefaultUI: true,
+          gestureHandling: "none",
+          scrollwheel: true}}
       >
         {/* Child components, such as markers, info windows, etc. */}
         {markerLocation && <Marker position={markerLocation} />}
