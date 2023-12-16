@@ -29,55 +29,79 @@ const Navbar = () => {
 
   // JSX structure
   return (
-    <div dir="rtl" className="relative h-20">
-      <nav className="absolute top-0 inset-x-0 bg-white border-gray-200 dark:bg-gray-900">
-        <div className="table-row-group">
-          <div className="table-row">
-            <div className="table-cell right-2">
-              <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-5 rtl:space-x-reverse">
-                {user ? (
-                  // User is authenticated
-                  <>
-                    <li>
-                      <Link to="/Home">Home</Link>
-                    </li>
-                    <li>
-                      <Link to="/contact">Contact</Link>
-                    </li>
-                    <li>
-                      <Link to="/about">About</Link>
-                    </li>
-                    <li>
-                      <Link to="/settings">Settings</Link>
-                    </li>
-                    <li>
-                      <button onClick={handleLogOut}>Log out</button>
-                    </li>
-                  </>
-                ) : (
-                  // User is not authenticated
-                  <>
-                    <li>
-                      <Link to="/contact">Contact</Link>
-                    </li>
-                    <li>
-                      <Link to="/login">Login</Link>
-                    </li>
-                    <li>
-                      <Link to="/signup">Sign Up</Link>
-                    </li>
-                  </>
-                )}
-              </ul>
-            </div>
+    <nav class="bg-gray-200">
+      <div class="flex flex-wrap justify-between items-center px-3 mx-auto">
+
+        <a href="/about" class="flex items-center space-x-4 py-3 px-3">
+        <img class="h-8 w-8" src={logo} alt="Logo" />
+        <span>TravelGPT</span>
+      </a>
+        <div class={`${isMenuOpen ? "" : "hidden  w-full md:block md:w-auto"}`} id="navbar-default">
+          <ul class="flex items-center space-x-3 py-3 px-3 font-bold">
+            {user ? (
+              <>
+                <li>
+                  <Link to="/Home" onClick={closeMenu}>
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/contact" onClick={closeMenu}>
+                    Contact
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/about" onClick={closeMenu}>
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/settings" onClick={closeMenu}>
+                    Settings
+                  </Link>
+                </li>
+                <li>
+                  <button onClick={handleLogOut}>Log out</button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link to="/contact" onClick={closeMenu} class="p-3">
+                    Contact
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/login" onClick={closeMenu}>
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/signup" onClick={closeMenu}>
+                    Sign Up
+                  </Link>
+                </li>
+              </>
+            )}
+          </ul>
           </div>
 
+          <button
+            class="md:hidden flex items-center"
+            data-toggle="collapse"
+            data-target="navbar-default"
+            type="button"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <img class="h-8 w-8" src={menu} alt="Menu" />
+          </button>
 
-        </div>
 
-      </nav >
-    </div >
-  );
+      </div>
+
+    </nav >
+
+);
 };
 
 export default Navbar;

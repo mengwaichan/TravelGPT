@@ -24,7 +24,7 @@ const CreateProfile = () => {
       // Make an API call to create user profile
       const response = await axios.post(
         'http://127.0.0.1:5000/profile/create_profile',
-        { 
+        {
           email : email,
           first_name : firstName,
           last_name : lastName,
@@ -49,12 +49,14 @@ const CreateProfile = () => {
   };
 
   return (
-    <div>
-      <h1>Create Profile</h1>
+    <div class="flex justify-center items-center py-10 px-4">
+      <div >
+      <h1 class="text-center font-bold">Create Profile</h1>
       <form onSubmit={handleSubmit}>
         <label>
-          First Name:
+          <strong>First Name:</strong>
           <input
+            class="text-sm w-700 px-4 py-2 border border-solid border-gray-300 rounded mt-4 ml-4"
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
@@ -62,8 +64,9 @@ const CreateProfile = () => {
         </label>
         <br />
         <label>
-          Last Name:
+          <strong>Last Name:</strong>
           <input
+            class="text-sm w-700 px-4 py-2 border border-solid border-gray-300 rounded mt-4 ml-4"
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
@@ -71,19 +74,27 @@ const CreateProfile = () => {
         </label>
         <br />
         <label>
-          Date of Birth:
+          <strong>Date of Birth:</strong>
           <input
-            type="date" 
+            class="text-sm w-700 px-4 py-2 border border-solid border-gray-300 rounded mt-4 ml-4"
+            type="date"
             value={dob}
             onChange={(e) => setDob(e.target.value)}
           />
         </label>
         <br />
-        <button type="submit">Submit</button>
+
+        <div class="flex justify-center items-center">
+        <button type="submit"
+        class="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider text-center"
+        >Submit</button>
+        </div>
       </form>
       {error && <p style={{ color: 'red' }}>{error}</p>}
+      </div>
     </div>
   );
 };
 
 export default CreateProfile;
+
