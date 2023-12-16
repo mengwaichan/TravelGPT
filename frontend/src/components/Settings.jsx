@@ -1,49 +1,48 @@
-import React, { useState, useEffect } from 'react';
-import { useUserAuth } from './UserAuth';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { db } from '../firebase'
-import { doc, getDoc } from 'firebase/firestore'
+import React, { useState, useEffect } from "react";
+import { useUserAuth } from "./UserAuth";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { db } from "../firebase";
+import { doc, getDoc } from "firebase/firestore";
+import logo from "../assets/travel.png";
 
 const Settings = () => {
   const { uid } = useUserAuth();
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [dob, setDob] = useState('');
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [dob, setDob] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserProfile = async (e) => {
-   
-        const docRef = doc(db, "users", uid)
-        const docSnap = await getDoc(docRef)
+      const docRef = doc(db, "users", uid);
+      const docSnap = await getDoc(docRef);
 
-        const userData = docSnap.data();
-        setFirstName(userData.first_name || '');
-        setLastName(userData.last_name || '');
-        setDob(userData.dob);
-        setEmail(userData.email);
-    }
+      const userData = docSnap.data();
+      setFirstName(userData.first_name || "");
+      setLastName(userData.last_name || "");
+      setDob(userData.dob);
+      setEmail(userData.email);
+    };
 
     fetchUserProfile();
-    }, [uid]);
-     
-  
+  }, [uid]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Ensure both fields are filled
     if (!firstName || !lastName) {
-      setError('Please fill in both first name and last name.');
+      setError("Please fill in both first name and last name.");
       return;
     }
 
     try {
       // Make an API call to update user profile
       await axios.post(
-        'http://127.0.0.1:5000/profile/update_profile',
+        "http://127.0.0.1:5000/profile/update_profile",
         {
           first_name: firstName,
           last_name: lastName,
@@ -51,46 +50,157 @@ const Settings = () => {
         {
           headers: {
             Authorization: `${uid}`,
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
         }
       );
 
-      console.log('Profile updated successfully');
+      console.log("Profile updated successfully");
       // You can handle success or navigate the user to another page here
     } catch (error) {
-      setError('Error updating profile. Please try again.');
+      setError("Error updating profile. Please try again.");
       console.error(error);
     }
   };
 
   return (
-    <div>
-      <h1>Update Profile</h1>
-      <p>Email: {email}</p>
-      <p>Date of Birth: {dob}</p>
-      <form onSubmit={handleSubmit}>
-        <label>
-          First Name:
-          <input
-            type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+    <div className="flex min-h-screen items-center justify-center px-4 mt-2 sm:px-6 lg:px-8">
+      <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl m-auto bg-emerald-50 rounded-lg p-5">
+        <div className="mb-8">
+          <img
+            src={logo}
+            alt="Travel GPT Logo"
+            className="mx-auto h-20 sm:h-32 md:h-40"
           />
-        </label>
-        <br />
-        <label>
-          Last Name:
-          <input
-            type="text"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
-        </label>
-        <br />
-        <button type="submit">Update</button>
-      </form>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+        </div>
+        {/* <h1>Update Profile</h1>
+        <p>Email: {email}</p>
+        <p>Date of Birth: {dob}</p> */}
+        <form onSubmit={handleSubmit} className="w-full max-w-sm">
+          <div className="md:flex md:items-center mb-6">
+            <div className="md:w-1/3">
+              <label
+                class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                for="inline-full-name"
+              >
+                Email:{" "}
+              </label>
+            </div>
+            <div className="md:w-2/3">
+              <div class="relative">
+                <input
+                  type="text"
+                  id="disabled_filled"
+                  class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  placeholder=" "
+                  disabled
+                />
+                <label
+                  for="disabled_filled"
+                  class="absolute text-sm text-gray-400 dark:text-gray-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+                >
+                  {email}
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div className="md:flex md:items-center mb-6">
+            <div className="md:w-1/3">
+              <label
+                class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                for="inline-full-name"
+              >
+                Date of Birth:{" "}
+              </label>
+            </div>
+            <div className="md:w-2/3">
+              <div class="relative">
+                <input
+                  type="text"
+                  id="disabled_filled"
+                  class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  placeholder=" "
+                  disabled
+                />
+                <label
+                  for="disabled_filled"
+                  class="absolute text-sm text-gray-400 dark:text-gray-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+                >
+                  {dob}
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div className="md:flex md:items-center mb-6">
+            <div className="md:w-1/3">
+              <label
+                class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                for="inline-full-name"
+              >
+                First Name:{" "}
+              </label>
+            </div>
+            <div className="md:w-2/3">
+              <div class="relative">
+                <input
+                  type="text"
+                  id="floating_filled"
+                  class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+                <label
+                  for="floating_filled"
+                  class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+                >
+                  First Name
+                </label>
+              </div>
+            </div>
+          </div>
+          <div className="md:flex md:items-center mb-6">
+            <div className="md:w-1/3">
+              <label
+                class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                for="inline-full-name"
+              >
+                Last Name:{" "}
+              </label>
+            </div>
+            <div className="md:w-2/3">
+              <div class="relative">
+                <input
+                  type="text"
+                  id="floating_filled"
+                  class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+                <label
+                  for="floating_filled"
+                  class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+                >
+                  Last Name
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="md:flex md:items-center">
+            <div class="md:w-1/2"></div>
+            <div class="md:w-1/2">
+              <button
+                class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                type="submit"
+              >
+                Update
+              </button>
+            </div>
+          </div>
+        </form>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+      </div>
     </div>
   );
 };

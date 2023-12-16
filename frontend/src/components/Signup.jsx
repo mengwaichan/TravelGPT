@@ -6,10 +6,16 @@ import logo from "../assets/travel.png";
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const { signUp } = useUserAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    if (password !== confirmPassword) {
+      console.log("Passwords do not match");
+      return;
+    }
+
     e.preventDefault();
     try {
       await signUp(email, password);
@@ -26,8 +32,7 @@ const Signup = () => {
         <img class="object-contain h-auto w-40 " src={logo} alt="Logo" />
         </Link>
       </div>
-      <div className="text-center">
-        <h1>Sign Up</h1>
+      <div className="text-center mt-5">
         <form onSubmit={handleSubmit}>
           <div>
             <input
@@ -50,7 +55,16 @@ const Signup = () => {
               name="password"
             />
           </div>
-
+            <div>
+            <input
+              type="password"
+              className="text-sm w-700 px-4 py-2 border border-solid border-gray-300 rounded mt-4"
+              placeholder="Confirm Password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              name="confirmPassword"
+            />
+          </div>
           <button
             type="submit"
             className="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider"

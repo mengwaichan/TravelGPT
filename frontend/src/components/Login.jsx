@@ -45,7 +45,6 @@ const Login = () => {
     }
   };
 
-  const aspectRatio = 969 / 1500;
 
   return (
     <div className = "mt-20">
@@ -54,8 +53,7 @@ const Login = () => {
           <img class="object-contain h-auto w-40 " src={logo} alt="Logo" />
         </Link>
       </div>
-      <div className="text-center">
-        <h1>Login</h1>
+      <div className="text-center mt-5">
         <form onSubmit={handleSubmit}>
           <div>
             <input

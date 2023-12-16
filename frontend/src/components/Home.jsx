@@ -3,7 +3,7 @@ import { useUserAuth } from "./UserAuth";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { db } from '../firebase';
-import { collection, getDocs, query, limit } from 'firebase/firestore';
+import { collection, getDocs, query, limit, orderBy } from 'firebase/firestore';
 
 const Home = () => {
   const { uid } = useUserAuth();
@@ -21,7 +21,7 @@ const Home = () => {
 
   const fetchRecentlyViewedData = async () => {
     const itinerariesCollectionRef = collection(db, `users/${uid}/itineraries`);
-    const q1 = query(itinerariesCollectionRef, limit(3));
+    const q1 = query(itinerariesCollectionRef,orderBy("timestamp", "desc"), limit(3));
 
     const itinerariesSnapshot = await getDocs(q1);
     const recentlyViewedData = [];
