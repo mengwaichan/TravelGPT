@@ -10,16 +10,24 @@
     ```
 
 2. Start Virtual Environment 
-
+    #### For Windows User
     ```bash
     python -m venv env
     env/Scripts/Activate
     ```
-
+    #### For MacOS User
+    ```bash
+    python3 -m venv env
+    source env/bin/Activate
+    ```
 3. Install dependencies:
-
+    #### For Windows User
     ```bash
     pip install -r requirements.txt
+    ```
+    #### For MacOS User
+    ```bash
+    pip3 install -r requirements.txt
     ```
 
 make sure to have `firebase_auth.json` and `.env` in your directory.
