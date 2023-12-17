@@ -23,6 +23,17 @@ def update_profile():
 
     return jsonify({"message": "Profile updated successfully"})
 
+@profile_blueprint.route('/get_profile', methods = ['GET'])
+def get_profile():
+    user_id = request.headers.get('Authorization')
+
+    user_profile_fields = fetch_user_profile(user_id)
+
+    if user_profile_fields:
+        return jsonify(user_profile_fields)
+    else:
+        return jsonify({"error": "User profile not found"}), 404
+
 
 def create_user_profile(user_id, profile_fields):
     # Create user profile in Firestore
@@ -35,3 +46,18 @@ def update_user_profile(user_id, profile_fields):
     print("updating user")
     user_profile_ref = firestore.client().collection('users').document(user_id)
     user_profile_ref.update(profile_fields)
+
+def fetch_user_profile(user_id):
+    print("getting user")
+    user_profile_ref = firestore.client().collection('users').document(user_id)
+
+    user_snapshot = user_profile_ref.get()
+
+    if user_snapshot.exists:
+        fields_to_retrieve = ['last_name', 'first_name', 'dob', 'email']
+
+        user_profile_fields = {field: user_snapshot.get(field) for field in fields_to_retrieve}
+
+        return user_profile_fields
+    else:
+        return None
