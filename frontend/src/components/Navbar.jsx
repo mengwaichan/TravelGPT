@@ -29,16 +29,16 @@ const Navbar = () => {
 
   // JSX structure
   return (
-    <nav class="bg-custom-color">
-      <div class="flex flex-wrap justify-between items-center px-3 mx-auto">
-        <a href="/about" class="flex items-center space-x-4 py-3 px-3">
-          <img class="h-8" src={logo} alt="Logo" />
+    <nav className="bg-custom-color">
+      <div className="flex flex-wrap justify-between items-center px-3 mx-auto">
+        <a href="/about" className="flex items-center space-x-4 py-3 px-3">
+          <img className="h-8" src={logo} alt="Logo" />
         </a>
         <div
-          class={`${isMenuOpen ? "" : "hidden  w-full md:block md:w-auto"}`}
+          className={`${isMenuOpen ? "" : "hidden  w-full md:block md:w-auto"}`}
           id="navbar-default"
         >
-          <ul class="flex items-center space-x-3 py-3 px-3 font-bold">
+          <ul className="flex items-center space-x-3 py-3 px-3 font-bold">
             {user ? (
               <>
                 <li>
@@ -63,7 +63,7 @@ const Navbar = () => {
             ) : (
               <>
                 <li>
-                  <Link to="/contact" onClick={closeMenu} class="p-3" style={{ color: "#3a4673" }}>
+                  <Link to="/contact" onClick={closeMenu} className="p-3" style={{ color: "#3a4673" }}>
                     Contact
                   </Link>
                 </li>
@@ -83,13 +83,13 @@ const Navbar = () => {
         </div>
 
         <button
-          class="md:hidden flex items-center"
+          className="md:hidden flex items-center"
           data-toggle="collapse"
           data-target="navbar-default"
           type="button"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          <img class="h-8 w-8" src={menu} alt="Menu" />
+          <img className="h-8 w-8" src={menu} alt="Menu" />
         </button>
       </div>
     </nav>

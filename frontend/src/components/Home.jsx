@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { db } from "../firebase";
 import { collection, getDocs, query, limit, orderBy } from "firebase/firestore";
+import Place from "./Place"
 
 const Home = () => {
   const { uid } = useUserAuth();
@@ -136,25 +137,19 @@ const Home = () => {
   }, [selectedData]);
 
   return (
-    <div className="flex flex-col justify-between p-8 bg-gray-100 h-screen">
+    <div className="flex flex-col justify-between bg-gray-100 h-screen">
       {/* Recently Viewed Section */}
       <div className="mr-4 p-10">
         <div className="mb-4">
           <strong className="text-lg">Recently Viewed</strong>
         </div>
-        {recentlyViewedData.map((item, index) => (
-          <div key={index} className="mb-2">
-            <button
-              className="text-blue-500 hover:underline focus:outline-none"
-              onClick={() => {
-                setSelectedData(item);
-              }}
-            >
-              {item.city}
-            </button>
-            <p className="text-gray-500">{`${item.days.length} Days`}</p>
-          </div>
-        ))}
+        <div style={{ display: 'flex' }}>
+          {recentlyViewedData.map((item, index) => (
+            <div key={index} style={{ marginRight: '20px' }}>
+              <Place data={item} onClick={setSelectedData} />
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Travel Section */}
@@ -190,7 +185,7 @@ const Home = () => {
                   htmlFor="floating_filled"
                   className="absolute text-sm text-gray-900 dark:text-gray-700 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
                 >
-                  City
+                  Where
                 </label>
               </div>
             </div>
@@ -202,7 +197,7 @@ const Home = () => {
                 className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
                 htmlFor="duration"
               >
-                Duration:
+                Days:
               </label>
             </div>
             <div>
@@ -218,18 +213,18 @@ const Home = () => {
                   htmlFor="floating_filled"
                   className="absolute text-sm text-gray-900 dark:text-gray-700 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
                 >
-                  Duration
+                  Days
                 </label>
               </div>
               <p
                 id="helper-text-explanation"
-                class={`mt-2 text-sm ${
+                className={`mt-2 text-sm ${
                   errorDuration
                     ? "text-red-500"
                     : "text-gray-500 dark:text-gray-400"
                 }`}
               >
-                Please select a number from 1 to 7 for duration.
+                Please select a number from 1 to 7 day(s).
               </p>
             </div>
           </div>
@@ -249,19 +244,13 @@ const Home = () => {
         <div className="mb-4">
           <strong className="text-lg">Recommended</strong>
         </div>
-        {recommendedData.map((item, index) => (
-          <div key={index} className="mb-2">
-            <button
-              className="text-blue-500 hover:underline focus:outline-none"
-              onClick={() => {
-                setSelectedData(item);
-              }}
-            >
-              {item.city}
-            </button>
-            <p className="text-gray-500">{`${item.days.length} Days`}</p>
-          </div>
-        ))}
+        <div style={{ display: 'flex' }}>
+          {recommendedData.map((item, index) => (
+            <div key={index} style={{ marginRight: '20px' }}>
+              <Place data={item} onClick={setSelectedData} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

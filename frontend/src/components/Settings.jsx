@@ -64,7 +64,7 @@ const Settings = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center px-4 mt-2 sm:px-6 lg:px-8">
+    <div className="flex min-h-screen items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-t from-cyan-500 to-amber-100">
       <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl m-auto bg-emerald-50 rounded-lg p-5">
         <div className="mb-8">
           <img

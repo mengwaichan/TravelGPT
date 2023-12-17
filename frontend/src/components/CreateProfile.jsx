@@ -49,7 +49,7 @@ const CreateProfile = () => {
   };
 
   return (
-    <div class="flex justify-center items-center py-10 px-4">
+    <div class="flex justify-center items-center py-10 px-4 bg-gradient-to-t from-cyan-500 to-amber-100">
       <div>
         <h1 class="text-center font-bold">Create Profile</h1>
         <form onSubmit={handleSubmit}>

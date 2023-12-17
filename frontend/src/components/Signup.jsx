@@ -26,8 +26,9 @@ const Signup = () => {
   };
 
   return (
-    <div className = "mt-20">
-      <div className="flex justify-center items-center text-center">
+    <div className= "bg-gradient-to-t from-cyan-500 to-amber-100">
+    <div className = "mt-20 ">
+      <div className="flex justify-center items-center text-center ">
         <Link to="/about">
         <img class="object-contain h-auto w-40 " src={logo} alt="Logo" />
         </Link>
@@ -83,6 +84,7 @@ const Signup = () => {
           </div>
         </form>
       </div>
+    </div>
     </div>
   );
 };

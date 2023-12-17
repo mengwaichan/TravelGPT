@@ -51,13 +51,13 @@ const Map = ( { geocodingData, markerLocation, directionData }) => {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={directionData !== null ? 14.5 : 7.5}
+        zoom={directionData !== null ? 14.5 : 7}
         onLoad={onLoad}
         onUnmount={onUnmount}
         options={{
           streetViewControl: false,
           scaleControl: true,
-          mapTypeControl: true,
+          mapTypeControl: false,
           panControl: false,
           zoomControl: false,
           rotateControl: true,
