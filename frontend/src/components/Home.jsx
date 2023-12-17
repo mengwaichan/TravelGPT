@@ -25,7 +25,7 @@ const Home = () => {
     const q1 = query(
       itinerariesCollectionRef,
       orderBy("timestamp", "desc"),
-      limit(3)
+      limit(5)
     );
 
     const itinerariesSnapshot = await getDocs(q1);
@@ -137,7 +137,7 @@ const Home = () => {
   }, [selectedData]);
 
   return (
-    <div className="flex flex-col justify-between bg-gray-100 h-screen">
+    <div className="flex flex-col justify-between bg-gray-100">
       {/* Recently Viewed Section */}
       <div className="mr-4 p-10">
         <div className="mb-4">
@@ -238,7 +238,7 @@ const Home = () => {
           </button>
         </form>
       </div>
-
+  
       {/* Recommended Section */}
       <div className="mr-4 p-10">
         <div className="mb-4">

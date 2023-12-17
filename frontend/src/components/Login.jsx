@@ -47,14 +47,14 @@ const Login = () => {
 
 
   return (
-    <div className="mt-20 bg-gradient-to-t from-cyan-500 to-amber-100">
-  <div className="flex justify-center items-center text-center ">
+    <div className="">
+  <div className="mt-20 flex justify-center items-center text-center ">
     <Link to="/about">
       <img className="object-contain h-auto w-40" src={logo} alt="Logo" />
     </Link>
   </div>
   <div className="text-center mt-5">
-    <div className="w-full max-w-sm m-auto bg-emerald-50 rounded-lg p-5">
+    <div className="w-full max-w-sm m-auto rounded-lg p-5">
       <form onSubmit={handleSubmit} className="text-center">
         <div>
           <input
@@ -94,7 +94,7 @@ const Login = () => {
       </form>
     </div>
   </div>
-</div>
+    </div>
 
   );
 };

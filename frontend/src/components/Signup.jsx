@@ -26,7 +26,6 @@ const Signup = () => {
   };
 
   return (
-    <div className= "bg-gradient-to-t from-cyan-500 to-amber-100">
     <div className = "mt-20 ">
       <div className="flex justify-center items-center text-center ">
         <Link to="/about">
@@ -84,7 +83,6 @@ const Signup = () => {
           </div>
         </form>
       </div>
-    </div>
     </div>
   );
 };

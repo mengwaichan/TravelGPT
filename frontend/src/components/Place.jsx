@@ -47,7 +47,7 @@ const Place = ({ data, onClick }) => {
       >
         {data.city}
       </button>
-      <p className="text-gray-500">{`${data.days.length} Days`}</p>
+      <p className="text-gray-500">{`${data.days.length} Day(s)`}</p>
     </div>
 
   );

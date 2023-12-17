@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useUserAuth } from "./UserAuth";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { db } from "../firebase";
-import { doc, getDoc } from "firebase/firestore";
 import logo from "../assets/travel.png";
 
 const Settings = () => {
@@ -13,22 +10,37 @@ const Settings = () => {
   const [email, setEmail] = useState("");
   const [dob, setDob] = useState("");
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchUserProfile = async (e) => {
-      const docRef = doc(db, "users", uid);
-      const docSnap = await getDoc(docRef);
-
-      const userData = docSnap.data();
-      setFirstName(userData.first_name || "");
-      setLastName(userData.last_name || "");
-      setDob(userData.dob);
-      setEmail(userData.email);
+    const fetchUserProfile = async () => {
+      try {
+        // Make a GET request to your Flask API using Axios
+        const response = await axios.get("http://127.0.0.1:5000/profile/get_profile", {
+          headers: {
+            'Authorization': uid, // Assuming uid is the user ID
+            'Content-Type': 'application/json',
+          },
+        });
+  
+        if (response.status === 200) {
+          const userData = response.data;
+          setFirstName(userData.first_name || "");
+          setLastName(userData.last_name || "");
+          setDob(userData.dob);
+          setEmail(userData.email);
+        } else {
+          console.error('Failed to fetch user profile:', response.statusText);
+          // Handle error if needed
+        }
+      } catch (error) {
+        console.error('Error during fetchUserProfile:', error.message);
+        // Handle error if needed
+      }
     };
-
+  
     fetchUserProfile();
   }, [uid]);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -64,8 +76,8 @@ const Settings = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-t from-cyan-500 to-amber-100">
-      <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl m-auto bg-emerald-50 rounded-lg p-5">
+    <div className="flex min-h-screen items-center justify-center px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl m-auto bg-emerald-100 rounded-lg p-5">
         <div className="mb-8">
           <img
             src={logo}

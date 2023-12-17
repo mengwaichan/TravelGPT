@@ -24,6 +24,7 @@ const App = () => {
   return (
     <UserAuthContextProvider>
       <Navbar />
+      <div className = "bg-gray-100">
       <Routes>
         {/* User Logged In = False : Routing */}
         <Route path="/login" element={<Login />} />
@@ -51,6 +52,7 @@ const App = () => {
         <Route path="/create-profile" element={<CreateProfile />} />
         <Route path="/settings" element={<Settings />} />
       </Routes>
+      </div>
     </UserAuthContextProvider>
   );
 };
