@@ -1,5 +1,4 @@
 from firebase_admin import firestore
-from datetime import datetime
 
 def write_itinerary(uid, itinerary_data):
     

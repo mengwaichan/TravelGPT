@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from route import Route
+from models.route import Route
 
 route_blueprint = Blueprint('route', __name__)
 

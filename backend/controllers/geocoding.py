@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from geocoding import Geocoding
+from models.geocoding import Geocoding
 
 geocoding_blueprint = Blueprint('geocoding', __name__)
 

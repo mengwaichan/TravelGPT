@@ -2,11 +2,11 @@ from flask import Flask
 import firebase_admin
 from firebase_admin import credentials
 from flask_cors import CORS
-from route_blueprint import route_blueprint
-from openai_blueprint import itinerary_blueprint
-from geocoding_blueprint import geocoding_blueprint
-from user_profile_blueprint import profile_blueprint
-from history_blueprint import history_blueprint
+
+from controllers.route import route_blueprint
+from controllers.itinerary import itinerary_blueprint
+from controllers.geocoding import geocoding_blueprint
+from controllers.profile import profile_blueprint
 
 app = Flask(__name__)
 CORS(app) 
@@ -18,7 +18,6 @@ app.register_blueprint(route_blueprint, url_prefix='/route')
 app.register_blueprint(itinerary_blueprint, url_prefix = '/itinerary')
 app.register_blueprint(geocoding_blueprint, url_prefix = '/geocoding')
 app.register_blueprint(profile_blueprint, url_prefix = '/profile')
-app.register_blueprint(history_blueprint, url_prefix = '/user')
 
 if __name__ == '__main__':
     app.run(host="localhost", debug=True, port=5000)

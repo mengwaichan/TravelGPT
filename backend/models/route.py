@@ -35,9 +35,3 @@ class Route:
         response = requests.post(self.api_url,headers=self.headers, json=route_request)  
         return response.json()
 
-
-
-#fetch_directions = Route()
-
-#response_data = fetch_directions.fetch_directions(40.60672559389838, -73.94413969169213, 40.82071004912401, -73.9481195380607, "transit")
-#print(response_data)
