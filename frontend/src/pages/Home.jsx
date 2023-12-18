@@ -10,45 +10,16 @@ const Home = () => {
   const navigate = useNavigate();
 
   const [selectedData, setSelectedData] = useState(null);
-  const [geocodingData, setGeocodingData] = useState({});
 
   const handleTravelFormSubmit = (data) => {
     setSelectedData(data);
   };
 
   useEffect(() => {
-    if (selectedData && geocodingData) {
-      navigate("/travel", { state: { selectedData, geocodingData } });
-    }
-  }, [geocodingData, navigate, selectedData]);
-
-  useEffect(() => {
-    const fetchGeocodingData = async () => {
-      try {
-        const cityName = selectedData.city;
-
-        // Assuming you have the geocoding API endpoint available
-        // Unchanged code for Axios request
-        const response = await axios.post(
-          "http://127.0.0.1:5000/geocoding/",
-          { name: cityName },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-
-        setGeocodingData(response.data);
-      } catch (error) {
-        console.error("Error fetching geocoding data:", error);
-      }
-    };
-
     if (selectedData) {
-      fetchGeocodingData();
+      navigate("/travel", { state: { selectedData } });
     }
-  }, [selectedData]);
+  }, [navigate, selectedData]);
 
   return (
     <div className="flex flex-col justify-between bg-gray-100">
