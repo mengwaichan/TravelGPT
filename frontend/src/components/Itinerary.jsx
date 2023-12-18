@@ -108,7 +108,6 @@ const Itinerary = ({ itineraryData, geocodingData }) => {
   };
 
   return (
-    // <div style={{ display: "flex", height: "100%" }}>
     <div className="flex h-screen overflow-hidden">
       {/* Left Section - Itinerary */}
       <div className="w-1/3 p-6 overflow-y-auto">

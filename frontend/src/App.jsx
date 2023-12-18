@@ -6,10 +6,7 @@ import { Route, Routes } from "react-router-dom";
 }
 import { UserAuthContextProvider } from "./components/UserAuth";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Login from "./pages/Login";
 import Signup from "./components/Signup";
-import Home from "./components/Home";
-import CreateProfile from "./pages/CreateProfile";
 import Navbar from "./components/Navbar";
 import Settings from "./components/Settings";
 
@@ -19,6 +16,9 @@ import Settings from "./components/Settings";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import Travel from "./pages/Travel";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import CreateProfile from "./pages/CreateProfile";
 
 const App = () => {
   return (

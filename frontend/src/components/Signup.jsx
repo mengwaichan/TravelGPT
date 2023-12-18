@@ -7,16 +7,17 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const { signUp } = useUserAuth();
+  const { signUp, signInWithGoogle } = useUserAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
+
     if (password !== confirmPassword) {
       console.log("Passwords do not match");
       return;
     }
 
-    e.preventDefault();
     try {
       await signUp(email, password);
       navigate("/create-profile");
@@ -25,11 +26,20 @@ const Signup = () => {
     }
   };
 
+  const handleGoogleSignIn = async () => {
+    try {
+      await signInWithGoogle();
+      navigate("/create-profile");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <div className = "mt-20 ">
-      <div className="flex justify-center items-center text-center ">
+    <div className="mt-20">
+      <div className="flex justify-center items-center text-center">
         <Link to="/about">
-        <img class="object-contain h-auto w-40 " src={logo} alt="Logo" />
+          <img class="object-contain h-auto w-40 " src={logo} alt="Logo" />
         </Link>
       </div>
       <div className="text-center mt-5">
@@ -55,7 +65,7 @@ const Signup = () => {
               name="password"
             />
           </div>
-            <div>
+          <div>
             <input
               type="password"
               className="text-sm w-700 px-4 py-2 border border-solid border-gray-300 rounded mt-4"
@@ -70,6 +80,15 @@ const Signup = () => {
             className="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider"
           >
             Sign Up
+          </button>
+
+          {/* Google Sign In Button */}
+          <button
+            type="button"
+            onClick={handleGoogleSignIn}
+            className="mt-4 bg-red-600 hover:bg-red-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider"
+          >
+            Sign Up with Google
           </button>
 
           <div className="mt-4 font-semibold text-sm text-slate-500 text-center">
