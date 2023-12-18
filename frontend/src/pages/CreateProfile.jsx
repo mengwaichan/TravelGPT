@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useUserAuth } from "./UserAuth";
+import { useUserAuth } from "../components/UserAuth";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
@@ -49,7 +49,7 @@ const CreateProfile = () => {
   };
 
   return (
-    <div class="flex justify-center items-center py-10 px-4 bg-gradient-to-t from-cyan-500 to-amber-100">
+    <div class="flex justify-center items-center py-10 px-4">
       <div>
         <h1 class="text-center font-bold">Create Profile</h1>
         <form onSubmit={handleSubmit}>

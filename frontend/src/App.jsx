@@ -6,10 +6,10 @@ import { Route, Routes } from "react-router-dom";
 }
 import { UserAuthContextProvider } from "./components/UserAuth";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Login from "./components/Login";
+import Login from "./pages/Login";
 import Signup from "./components/Signup";
 import Home from "./components/Home";
-import CreateProfile from "./components/CreateProfile";
+import CreateProfile from "./pages/CreateProfile";
 import Navbar from "./components/Navbar";
 import Settings from "./components/Settings";
 

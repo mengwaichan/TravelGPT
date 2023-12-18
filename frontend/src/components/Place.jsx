@@ -31,8 +31,7 @@ const Place = ({ data, onClick }) => {
     
         fetchPlaceImages();
       }, [data.city]);
-  
-    console.log(placeImage)
+
   return (
     <div className="w-60 mb-4 p-4 border rounded-lg hover:shadow-lg transition duration-300">
       <img

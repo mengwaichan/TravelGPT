@@ -15,6 +15,7 @@ const Itinerary = ({ itineraryData, geocodingData }) => {
 
   const [openDays, setOpenDays] = useState([]);
 
+  console.log(direction)
   const handleToggleDay = (index) => {
     setOpenDays((prevOpenDays) => {
       const isOpen = prevOpenDays.includes(index);
@@ -39,7 +40,7 @@ const Itinerary = ({ itineraryData, geocodingData }) => {
 
       setCurrLocation(currentLocationGeocode || {});
       setPrevLocation(prevLocationGeocode || {});
-      setMarkerLocation(currentLocationGeocode);
+      setMarkerLocation(currentLocationGeocode || {});
 
       if (currentLocationGeocode && prevLocationGeocode) {
         const transportType = location.transport || "walk";
@@ -58,7 +59,7 @@ const Itinerary = ({ itineraryData, geocodingData }) => {
       console.error("Error during click event:", error);
     }
   };
-
+  
   const getGeocode = async (locationName) => {
     try {
       // Make a POST request to your geocoding API endpoint using Axios
