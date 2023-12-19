@@ -23,7 +23,7 @@ const CreateProfile = () => {
     try {
       // Make an API call to create user profile
       const response = await axios.post(
-        "http://127.0.0.1:5000/profile/create_profile",
+        "/profile/create_profile",
         {
           email: email,
           first_name: firstName,

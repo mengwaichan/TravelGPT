@@ -8,7 +8,7 @@ const Place = ({ data, onClick }) => {
   useEffect(() => {
     const fetchPlaceImage = async () => {
       try {
-        const url = `http://127.0.0.1:5000/image/?city=${data.city.toLowerCase().replace(/\s+/g, '-')}`;
+        const url = `/image/?city=${data.city.toLowerCase().replace(/\s+/g, '-')}`;
         const response = await axios.get(url);
 
         const image = response.data.photos[0]?.image.mobile;
