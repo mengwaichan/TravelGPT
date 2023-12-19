@@ -3,6 +3,7 @@ import firebase_admin
 from firebase_admin import credentials
 from flask_cors import CORS
 import os
+import re
 from dotenv import load_dotenv
 
 from controllers.route import route_blueprint
@@ -33,7 +34,7 @@ cred = credentials.Certificate({
     "type": os.environ.get("FIREBASE_TYPE"),
     "project_id": os.environ.get("FIREBASE_PROJECT_ID"),
     "private_key_id": os.environ.get("FIREBASE_PRIVATE_KEY_ID"),
-    "private_key": os.environ.get("FIREBASE_PRIVATE_KEY"),
+    "private_key": re.sub(r'/\\n/g', '\n', os.environ.get("FIREBASE_PRIVATE_KEY")),
     "client_email": os.environ.get("FIREBASE_CLIENT_EMAIL"),
     "client_id": os.environ.get("FIREBASE_CLIENT_ID"),
     "auth_uri": os.environ.get("FIREBASE_AUTH_URI"),
