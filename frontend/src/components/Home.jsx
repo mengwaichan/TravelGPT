@@ -114,7 +114,7 @@ const Home = () => {
   }, [selectedData]); 
 
   return (
-    <div style={{ display: 'inline', justifycontent: 'center', alignValue: 'spcae-between' }} >
+    <div>
       <div>
         <div><strong>Recently Viewed</strong></div>
         {recentlyViewedData.map((item, index) => (
