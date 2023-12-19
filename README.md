@@ -32,6 +32,10 @@
 
 make sure to have `firebase_auth.json` and `.env` in your directory.
 
+![backend directory](https://github.com/mengwaichan/TravelGPT/assets/20369540/601a8735-3d0d-4f66-8c0a-66359b97a721)
+
+
+
 ### To Start the API
 
 ```bash
@@ -82,8 +86,13 @@ curl -X POST -H "Content-Type: application/json" -H "Authorization: UID" -d '{"e
     ```
 make sure to have `.env` in your directory.
 
+![frontend directory](https://github.com/mengwaichan/TravelGPT/assets/20369540/636e0068-f5ca-4c9a-beb5-20db45b66ca8)
+
+
 ### To Start 
 
 ```bash     
 npm run dev
 ```
+
+## Usage 
