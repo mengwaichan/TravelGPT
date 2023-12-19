@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useUserAuth } from "./UserAuth";
-import { useNavigate } from "react-router-dom";
+import { createRoutesFromElements, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { db } from '../firebase';
 import { collection, getDocs, query, limit, orderBy } from 'firebase/firestore';
@@ -114,7 +114,7 @@ const Home = () => {
   }, [selectedData]); 
 
   return (
-    <div class = "flex justify-center items-center">
+    <div style={{ display: 'inline', justifycontent: 'center', alignValue: 'spcae-between' }} >
       <div>
         <div><strong>Recently Viewed</strong></div>
         {recentlyViewedData.map((item, index) => (
