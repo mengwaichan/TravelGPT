@@ -22,7 +22,7 @@ const Home = () => {
   }, [navigate, selectedData]);
 
   return (
-    <div className="flex flex-col justify-between bg-gray-100">
+    <div className="flex flex-col bg-gradient-to-b from-cream-400 to-stone-900 justify-between bg-gray-100">
       {/* Recently Viewed Section */}
       <RecentlyViewed uid={uid} onClick={setSelectedData} />
 

@@ -4,3 +4,4 @@ requests
 firebase_admin
 openai
 python-dotenv
+pytest

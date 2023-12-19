@@ -49,10 +49,12 @@ const CreateProfile = () => {
   };
 
   return (
-    <div class="flex justify-center items-center py-10 px-4">
+    <div className="flex flex-col min-h-screen bg-gradient-to-b from-stone-400 to-green-900 justify-center items-center px-4 sm:px-6 lg:px-8 sm:mt-0">
+    <div className="w-full max-w-lg sm:max-w-xl lg:max-w-2xl bg-[#e8e7d5] rounded-lg shadow-md p-6 sm:p-8 text-center">
       <div>
-        <h1 class="text-center font-bold">Create Profile</h1>
-        <form onSubmit={handleSubmit}>
+        <h1 class="text-center font-bold text-3xl">Create Profile</h1>
+        <hr class="w-40 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700"/>
+        <form className="flex-col justify-left" onSubmit={handleSubmit}>
           <label>
             <strong>First Name:</strong>
             <input
@@ -94,6 +96,7 @@ const CreateProfile = () => {
           </div>
         </form>
         {error && <p style={{ color: "red" }}>{error}</p>}
+      </div>
       </div>
     </div>
   );

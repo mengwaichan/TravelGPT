@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import logo from "../assets/travel.png";
+import google from "../assets/google.png"
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -56,14 +57,16 @@ const Login = () => {
   };
 
   return (
-    <div className="">
-      <div className="mt-20 flex justify-center items-center text-center ">
+    <div className="flex flex-col min-h-screen bg-gradient-to-b from-stone-400 to-green-900 justify-center items-center px-4 sm:px-6 lg:px-8 sm:mt-0">
+      <div className="w-full max-w-lg sm:max-w-xl lg:max-w-2xl bg-[#e8e7d5] rounded-lg shadow-md p-6 sm:p-8 text-center">
+      <div className="flex justify-center items-center text-center ">
         <Link to="/about">
           <img className="object-contain h-auto w-40" src={logo} alt="Logo" />
         </Link>
       </div>
+      <hr class="w-40 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700"/>
       <div className="text-center mt-5">
-        <div className="w-full max-w-sm m-auto rounded-lg p-5">
+        <div className="w-full max-w-sm m-auto rounded-lg">
           <form onSubmit={handleSubmit} className="text-center">
             <div>
               <input
@@ -87,30 +90,35 @@ const Login = () => {
               />
             </div>
 
-            <button
-              type="submit"
-              className="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider"
-            >
-              Login
+            <div className="mt-4 flex flex-row text-center justify-center items-start">
+              <button
+                  type="submit"
+                  className="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider"
+                  style={{ margin: '0px' }}  
+              >
+                Login
             </button>
 
-            {/* Google Sign In Button */}
-            <button
-              type="button"
-              onClick={handleGoogleSignIn}
-              className="mt-4 bg-red-600 hover:bg-red-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider"
-            >
-              Login with Google
-            </button>
+              {/* Google Sign In Button */}
+              <button
+                  type="button"
+                  onClick={handleGoogleSignIn}
+                  className="flex items-center"
+                  style={{ marginLeft: '30px' }} 
+              >
+                  <img className="mx-auto h-7" src={google} />
+              </button>
+          </div>
 
-            <div className="mt-4 font-semibold text-sm text-slate-500 text-center">
-              Don&apos;t have an account?{" "}
-              <Link to="/signup" className="text-red-600 hover:underline hover:underline-offset-4">
-                Register
-              </Link>
-            </div>
+              <div className="mt-4 font-semibold text-sm text-slate-500 text-center">
+                Don&apos;t have an account?{" "}
+                <Link to="/signup" className="text-red-600 hover:underline hover:underline-offset-4">
+                  Register
+                </Link>
+              </div>
           </form>
         </div>
+      </div>
       </div>
     </div>
   );

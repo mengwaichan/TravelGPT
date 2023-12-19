@@ -76,8 +76,8 @@ const Settings = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl m-auto bg-emerald-100 rounded-lg p-5">
+    <div className="flex min-h-screen items-center bg-gradient-to-b from-stone-400 to-green-900 justify-center px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl m-auto bg-[#e8e7d5] rounded-lg p-5">
         <div className="mb-8">
           <img
             src={logo}
