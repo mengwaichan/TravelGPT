@@ -113,3 +113,9 @@ npm run dev
 ```
 
 ## Usage 
+
+
+
+https://github.com/mengwaichan/TravelGPT/assets/20369540/9a34c7b5-8a45-4feb-bd48-43c506f235fa
+
+
