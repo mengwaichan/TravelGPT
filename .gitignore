@@ -2,6 +2,7 @@ __pycache__/
 .env
 firebase_auth.json
 env/
+venv/
 
 # Logs
 logs
