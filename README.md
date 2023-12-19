@@ -1,4 +1,6 @@
 # TravelGPT
+### Demo
+http://travelgpt-f37dd340419a.herokuapp.com/
 ## Backend
 ### Built with
 
@@ -53,32 +55,6 @@ make sure to have `firebase_auth.json` and `.env` in your directory.
 
 ```bash
 flask run
-```
-### Itinerary API
-
-```bash
-curl -X POST -H "Content-Type: application/json" -H "Authorization: UID" -d '{"city":"CityName","duration":5}' http://127.0.0.1:5000/itinerary
-```
-
-### Geocoding API 
-
-```bash
-curl -X POST -H "Content-Type: application/json" -d '{"name": "LocationName"}' http://127.0.0.1:5000/geocoding
-```
-
-### Route API
-```bash
-curl -X POST -H "Content-Type: application/json" -d '{"origin_latitude": float, "origin_longitude": float, "destination_latitude": float, "destination_longitude": float, "transport": "walk"}' http://127.0.0.1:5000/route
-```
-
-### Create Profile 
-```bash
-curl -X POST -H "Content-Type: application/json" -H "Authorization: UID" -d '{"email": "Email", "first_name":"FirstName","last_name": "LastName", "dob": "Day of Birth"}' http://127.0.0.1:5000/profile/create_profile
-```
-
-### Update Profile 
-```bash
-curl -X POST -H "Content-Type: application/json" -H "Authorization: UID" -d '{"email": "Email", "first_name":"FirstName","last_name": "LastName", "dob": "Day of Birth"}' http://127.0.0.1:5000/profile/update_profile
 ```
 
 ## Frontend
