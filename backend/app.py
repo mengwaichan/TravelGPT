@@ -10,17 +10,16 @@ from controllers.geocoding import geocoding_blueprint
 from controllers.profile import profile_blueprint
 from controllers.place import place_image_blueprint
 
-app = Flask(__name__, static_folder="frontend/dist", template_folder="frontend")
+app = Flask(__name__, static_folder="../frontend/dist", template_folder="../frontend/dist")
 CORS(app) 
 
-@app.route("/static/<path:filename>")
-def serve_static(filename):
-    return send_from_directory(app.static_folder, filename)
-
-@app.route("/")
-def index():
-    return render_template("index.html")
-
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    if path != "" and os.path.exists(app.static_folder + '/' + path):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
 
 app.register_blueprint(route_blueprint, url_prefix='/route')
 app.register_blueprint(itinerary_blueprint, url_prefix = '/itinerary')
