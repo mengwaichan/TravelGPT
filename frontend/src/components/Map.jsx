@@ -3,11 +3,12 @@ import {GoogleMap, Marker, useJsApiLoader, Polyline } from '@react-google-maps/a
 
 const LIBRARIES = ['geometry'];
 
-const Map = ( { geocodingData, markerLocation, directionData }) => {
-    const { isLoaded, loadError } = useJsApiLoader({
-        googleMapsApiKey: import.meta.env.VITE_APP_GOOGLE_API_KEY,
-        libraries: LIBRARIES
-      });
+const Map = ({ geocodingData, markerLocation, directionData }) => {
+    const { isLoaded, loadError, loadGoogleApi } = useJsApiLoader({
+      googleMapsApiKey: import.meta.env.VITE_APP_GOOGLE_API_KEY,
+      libraries: LIBRARIES,
+    });
+    
     const defaultCenter = { lat: 40.81792206720871, lng: -73.94995404366331}
 
     const center = 
@@ -31,6 +32,27 @@ const Map = ( { geocodingData, markerLocation, directionData }) => {
     
     const [polylineMarker, setPolylineMarker] = useState('0%')
     
+    useEffect(() => {
+      const asyncLoadGoogleApi = async () => {
+        try {
+          // Load Google Maps API
+          await loadGoogleApi();
+    
+          // Continue with your logic after the API is loaded
+          console.log("Google Maps API loaded!");
+    
+          // Additional logic can go here
+    
+        } catch (error) {
+          // Handle errors that may occur during API loading
+          console.error("Error loading Google Maps API:", error);
+        }
+      };
+    
+      // Call the async function
+      asyncLoadGoogleApi();
+    }, []);
+
     useEffect(() => {
       // Check if directionData is available before setting up the interval
       

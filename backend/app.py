@@ -14,7 +14,8 @@ from controllers.place import place_image_blueprint
 
 app = Flask(__name__, static_folder="../frontend/dist", template_folder="../frontend/dist")
 CORS(app) 
-load_dotenv()
+dotenv_path = os.path.join(os.path.dirname(__file__), '..', '.env')
+load_dotenv(dotenv_path)
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')

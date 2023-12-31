@@ -14,8 +14,8 @@ const Itinerary = ({ itineraryData, geocodingData }) => {
   const [direction, setDirection] = useState({});
 
   const [openDays, setOpenDays] = useState([]);
-
-  console.log(direction)
+  
+  console.log(  )
   const handleToggleDay = (index) => {
     setOpenDays((prevOpenDays) => {
       const isOpen = prevOpenDays.includes(index);
