@@ -111,5 +111,3 @@ make sure to have `.env` in your directory.
 ```bash     
 npm run dev
 ```
-
-## Usage 
