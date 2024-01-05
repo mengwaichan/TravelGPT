@@ -63,7 +63,7 @@ const Itinerary = ({ itineraryData, geocodingData }) => {
   const getGeocode = async (locationName) => {
     try {
       // Make a POST request to your geocoding API endpoint using Axios
-      const response = await axios.post("http://127.0.0.1:5000/geocoding/", {
+      const response = await axios.post(`${import.meta.env.VITE_APP_CLOUD_API_URL}/geocoding/`, {
         name: locationName,
       });
 
@@ -91,7 +91,7 @@ const Itinerary = ({ itineraryData, geocodingData }) => {
       };
 
       const response = await axios.post(
-        "http://127.0.0.1:5000/route/",
+        `${import.meta.env.VITE_APP_CLOUD_API_URL}/route/`,
         routeData
       );
 

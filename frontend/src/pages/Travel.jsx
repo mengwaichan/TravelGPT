@@ -14,7 +14,7 @@ const Travel = () => {
       try {
         const cityName = itineraryData.city;
         const response = await axios.post(
-          "http://127.0.0.1:5000/geocoding/",
+          "${import.meta.env.VITE_APP_CLOUD_API_URL}/geocoding/",
           { name: cityName },
           {
             headers: {

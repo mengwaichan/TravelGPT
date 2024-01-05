@@ -15,7 +15,7 @@ const Settings = () => {
     const fetchUserProfile = async () => {
       try {
         // Make a GET request to your Flask API using Axios
-        const response = await axios.get("http://127.0.0.1:5000/profile/get_profile", {
+        const response = await axios.get(`${import.meta.env.VITE_APP_CLOUD_API_URL}/profile/get_profile`, {
           headers: {
             'Authorization': uid, // Assuming uid is the user ID
             'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ const Settings = () => {
     try {
       // Make an API call to update user profile
       await axios.post(
-        "http://127.0.0.1:5000/profile/update_profile",
+        `${import.meta.env.VITE_APP_CLOUD_API_URL}/profile/update_profile`,
         {
           first_name: firstName,
           last_name: lastName,

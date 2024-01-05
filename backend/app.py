@@ -2,6 +2,7 @@ from flask import Flask
 import firebase_admin
 from firebase_admin import credentials
 from flask_cors import CORS
+import os
 
 from controllers.route import route_blueprint
 from controllers.itinerary import itinerary_blueprint
@@ -22,4 +23,4 @@ app.register_blueprint(profile_blueprint, url_prefix = '/profile')
 app.register_blueprint(place_image_blueprint, url_prefix = '/image')
 
 if __name__ == '__main__':
-    app.run(host="localhost", debug=True, port=5000)
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))

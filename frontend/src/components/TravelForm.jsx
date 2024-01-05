@@ -33,7 +33,7 @@ const TravelForm = ({ uid, onSubmit }) => {
       setLoading(true);
 
       const response = await axios.post(
-        "http://127.0.0.1:5000/itinerary/",
+        `${import.meta.env.VITE_APP_CLOUD_API_URL}/itinerary/`,
         {
           city: city,
           duration: parseInt(duration),
