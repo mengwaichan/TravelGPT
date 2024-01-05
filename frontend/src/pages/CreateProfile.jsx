@@ -52,13 +52,13 @@ const CreateProfile = () => {
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-stone-400 to-green-900 justify-center items-center px-4 sm:px-6 lg:px-8 sm:mt-0">
     <div className="w-full max-w-lg sm:max-w-xl lg:max-w-2xl bg-[#e8e7d5] rounded-lg shadow-md p-6 sm:p-8 text-center">
       <div>
-        <h1 class="text-center font-bold text-3xl">Create Profile</h1>
-        <hr class="w-40 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700"/>
+        <h1 className="text-center font-bold text-3xl">Create Profile</h1>
+        <hr className="w-40 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700"/>
         <form className="flex-col justify-left" onSubmit={handleSubmit}>
           <label>
             <strong>First Name:</strong>
             <input
-              class="text-sm w-700 px-4 py-2 border border-solid border-gray-300 rounded mt-4 ml-4"
+              className="text-sm w-700 px-4 py-2 border border-solid border-gray-300 rounded mt-4 ml-4"
               type="text"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
@@ -68,7 +68,7 @@ const CreateProfile = () => {
           <label>
             <strong>Last Name:</strong>
             <input
-              class="text-sm w-700 px-4 py-2 border border-solid border-gray-300 rounded mt-4 ml-4"
+              className="text-sm w-700 px-4 py-2 border border-solid border-gray-300 rounded mt-4 ml-4"
               type="text"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
@@ -78,7 +78,7 @@ const CreateProfile = () => {
           <label>
             <strong>Date of Birth:</strong>
             <input
-              class="text-sm w-700 px-4 py-2 border border-solid border-gray-300 rounded mt-4 ml-4"
+              className="text-sm w-700 px-4 py-2 border border-solid border-gray-300 rounded mt-4 ml-4"
               type="date"
               value={dob}
               onChange={(e) => setDob(e.target.value)}
@@ -86,10 +86,10 @@ const CreateProfile = () => {
           </label>
           <br />
 
-          <div class="flex justify-center items-center">
+          <div className="flex justify-center items-center">
             <button
               type="submit"
-              class="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider text-center"
+              className="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider text-center"
             >
               Submit
             </button>

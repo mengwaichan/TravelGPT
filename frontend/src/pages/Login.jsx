@@ -64,7 +64,7 @@ const Login = () => {
           <img className="object-contain h-auto w-40" src={logo} alt="Logo" />
         </Link>
       </div>
-      <hr class="w-40 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700"/>
+      <hr className="w-40 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700"/>
       <div className="text-center mt-5">
         <div className="w-full max-w-sm m-auto rounded-lg">
           <form onSubmit={handleSubmit} className="text-center">

@@ -41,10 +41,10 @@ const Signup = () => {
     <div className="w-full max-w-lg sm:max-w-xl lg:max-w-2xl bg-[#e8e7d5] rounded-lg shadow-md p-6 sm:p-8 text-center">
       <div className="flex justify-center items-center text-center">
         <Link to="/about">
-          <img class="object-contain h-auto w-40 " src={logo} alt="Logo" />
+          <img className="object-contain h-auto w-40 " src={logo} alt="Logo" />
         </Link>
       </div>
-      <hr class="w-40 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700"/>
+      <hr className="w-40 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700"/>
       <div className="text-center mt-5">
         <form onSubmit={handleSubmit}>
           <div>

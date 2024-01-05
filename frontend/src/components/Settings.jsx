@@ -89,24 +89,24 @@ const Settings = () => {
           <div className="md:flex md:items-center mb-6">
             <div className="md:w-1/3">
               <label
-                class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
                 for="inline-full-name"
               >
                 Email:{" "}
               </label>
             </div>
             <div className="md:w-2/3">
-              <div class="relative">
+              <div className="relative">
                 <input
                   type="text"
                   id="disabled_filled"
-                  class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-neutral-200 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-neutral-200 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  className="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-neutral-200 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-neutral-200 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
                   disabled
                 />
                 <label
                   for="disabled_filled"
-                  class="absolute text-sm text-gray-400 dark:text-gray-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+                  className="absolute text-sm text-gray-400 dark:text-gray-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
                 >
                   {email}
                 </label>
@@ -117,24 +117,24 @@ const Settings = () => {
           <div className="md:flex md:items-center mb-6">
             <div className="md:w-1/3">
               <label
-                class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
                 for="inline-full-name"
               >
                 Date of Birth:{" "}
               </label>
             </div>
             <div className="md:w-2/3">
-              <div class="relative">
+              <div className="relative">
                 <input
                   type="text"
                   id="disabled_filled"
-                  class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-neutral-200 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-neutral-200 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  className="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-neutral-200 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-neutral-200 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
                   disabled
                 />
                 <label
                   for="disabled_filled"
-                  class="absolute text-sm text-gray-400 dark:text-gray-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+                  className="absolute text-sm text-gray-400 dark:text-gray-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
                 >
                   {dob}
                 </label>
@@ -145,24 +145,24 @@ const Settings = () => {
           <div className="md:flex md:items-center mb-6">
             <div className="md:w-1/3">
               <label
-                class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
                 for="inline-full-name"
               >
                 First Name:{" "}
               </label>
             </div>
             <div className="md:w-2/3">
-              <div class="relative">
+              <div className="relative">
                 <input
                   type="text"
                   id="floating_filled"
-                  class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-neutral-100 border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  className="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-neutral-100 border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                 />
                 <label
                   for="floating_filled"
-                  class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+                  className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
                 >
                   First Name
                 </label>
@@ -172,35 +172,35 @@ const Settings = () => {
           <div className="md:flex md:items-center mb-6">
             <div className="md:w-1/3">
               <label
-                class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
                 for="inline-full-name"
               >
                 Last Name:{" "}
               </label>
             </div>
             <div className="md:w-2/3">
-              <div class="relative">
+              <div className="relative">
                 <input
                   type="text"
                   id="floating_filled"
-                  class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-neutral-100 border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  className="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-neutral-100 border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                 />
                 <label
                   for="floating_filled"
-                  class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+                  className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
                 >
                   Last Name
                 </label>
               </div>
             </div>
           </div>
-          <div class="md:flex md:items-center">
-            <div class="md:w-1/2"></div>
-            <div class="md:w-1/2">
+          <div className="md:flex md:items-center">
+            <div className="md:w-1/2"></div>
+            <div className="md:w-1/2">
               <button
-                class="shadow bg-emerald-700 hover:bg-cyan-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                className="shadow bg-emerald-700 hover:bg-cyan-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                 type="submit"
               >
                 Update
