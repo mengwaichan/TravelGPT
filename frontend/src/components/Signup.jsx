@@ -9,23 +9,33 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const { signUp, signInWithGoogle } = useUserAuth();
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-
+    e.preventDefault()
+  
     if (password !== confirmPassword) {
-      console.log("Passwords do not match");
-      return;
+      setErrorMessage("Passwords do not match")
+      return
     }
-
+  
+    // Password validation
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+    if (!passwordRegex.test(password)) {
+      setErrorMessage("Password does not meet the requirements")
+      return
+    }
+  
     try {
       await signUp(email, password);
       navigate("/create-profile");
     } catch (err) {
       console.log(err);
+      setErrorMessage("An error occurred during signup")
     }
   };
+  
 
   const handleGoogleSignIn = async () => {
     try {
@@ -33,6 +43,7 @@ const Signup = () => {
       navigate("/create-profile");
     } catch (error) {
       console.log(error);
+      setErrorMessage("An error occurred during Google sign-in");
     }
   };
 
@@ -107,6 +118,7 @@ const Signup = () => {
               Login
             </Link>
           </div>
+          <div className="text-red-500 mt-2">{errorMessage}</div>
         </form>
       </div>
       </div>

@@ -41,7 +41,7 @@ const Login = () => {
         throw new Error("User not found");
       }
     } catch (err) {
-      setError(err.message);
+      setError("Invalid email or password. Please try again.");
       console.error(err);
     }
   };
@@ -89,7 +89,11 @@ const Login = () => {
                 name="password"
               />
             </div>
-
+            {error && (
+                <div className="mt-4 text-red-600">
+                  {error}
+                </div>
+              )}
             <div className="mt-4 flex flex-row text-center justify-center items-start">
               <button
                   type="submit"
