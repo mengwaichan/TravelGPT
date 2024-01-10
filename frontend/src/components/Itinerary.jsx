@@ -7,12 +7,10 @@ import markerIcon from "../assets/marker.png";
 
 const Itinerary = ({ itineraryData, geocodingData }) => {
   const { user } = useUserAuth();
-
   const [prevLocation, setPrevLocation] = useState({});
   const [currLocation, setCurrLocation] = useState({});
   const [markerLocation, setMarkerLocation] = useState({});
   const [direction, setDirection] = useState({});
-
   const [openDays, setOpenDays] = useState([]);
 
   const handleToggleDay = (index) => {
@@ -23,7 +21,7 @@ const Itinerary = ({ itineraryData, geocodingData }) => {
         : [...prevOpenDays, index];
     });
   };
-
+  console.log("geo", geocodingData)
   const handleMarkersClick = async (location) => {
     const marker = await getGeocode(location.name);
 
