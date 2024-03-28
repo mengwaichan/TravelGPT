@@ -21,7 +21,7 @@ const Itinerary = ({ itineraryData, geocodingData }) => {
         : [...prevOpenDays, index];
     });
   };
-  console.log("geo", geocodingData)
+  console.log("geo",geocodingData)
   const handleMarkersClick = async (location) => {
     const marker = await getGeocode(location.name);
 
