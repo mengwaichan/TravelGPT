@@ -39,7 +39,7 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: dist
-          path: dist
+          path: frontend/dist
       - name: check dir
         run: ls
       - name: Deploy to Firebase
