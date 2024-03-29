@@ -46,3 +46,4 @@ jobs:
           args: deploy --only hosting -P travelgpt-3d352
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        working-directory: frontend
