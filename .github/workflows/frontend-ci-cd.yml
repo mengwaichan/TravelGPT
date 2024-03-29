@@ -19,7 +19,7 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: dist
-          path: dist
+          path: ./frontend/dist
   deploy:
     name: Deploy
     needs: build
