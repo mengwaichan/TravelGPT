@@ -40,6 +40,8 @@ jobs:
         with:
           name: dist
           path: dist
+      - name: check dir
+        run: ls
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
