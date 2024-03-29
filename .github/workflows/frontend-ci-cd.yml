@@ -42,8 +42,9 @@ jobs:
           path: dist
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting -P travelgpt-3d352
+        run: |
+          cd frontend
+          npx firebase deploy --only hosting -P travelgpt-3d352
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        working-directory: frontend
+   
