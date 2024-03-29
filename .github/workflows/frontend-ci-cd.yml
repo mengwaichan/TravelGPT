@@ -12,9 +12,9 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@master
       - name: Install Dependencies
-        run: npm install
+        run: npm install --prefix frontend
       - name: Build
-        run: npm run build-prod
+        run: npm run build --prefix frontend
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
