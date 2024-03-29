@@ -40,6 +40,8 @@ jobs:
         with:
           name: dist
           path: dist
+      - name: Move Dist to Frontend
+        run: mv dist frontend/dist
       - name: Change Directory
         run: cd frontend
       - name: List Contents
