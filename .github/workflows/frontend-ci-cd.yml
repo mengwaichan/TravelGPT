@@ -3,7 +3,9 @@ on:
   push:
     branches:
       - main
-
+defaults:
+  run:
+    working-directory: frontend
 jobs:
   build:
     name: Build
@@ -12,14 +14,14 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@master
       - name: Install Dependencies
-        run: npm install --prefix frontend
+        run: npm install 
       - name: Build
-        run: npm run build --prefix frontend
+        run: npm run build 
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
           name: dist
-          path: ./frontend/dist
+          path: dist
   deploy:
     name: Deploy
     needs: build
@@ -40,13 +42,10 @@ jobs:
         with:
           name: dist
           path: dist
-      - name: Move Dist to Frontend
-        run: mv dist frontend/dist
-      - name: Change Directory and Deploy to Firebase
-        run: |
-          cd frontend
-          ls # Optional: List contents to ensure we're in the frontend directory
-          npx firebase deploy --only hosting -P travelgpt-3d352
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting -P travelgpt-3d352
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
    
