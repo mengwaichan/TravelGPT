@@ -42,14 +42,11 @@ jobs:
           path: dist
       - name: Move Dist to Frontend
         run: mv dist frontend/dist
-      - name: Change Directory
-        run: cd frontend
-      - name: List Contents
-        run: ls
-      - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting -P travelgpt-3d352
+      - name: Change Directory and Deploy to Firebase
+        run: |
+          cd frontend
+          ls # Optional: List contents to ensure we're in the frontend directory
+          npx firebase deploy --only hosting -P travelgpt-3d352
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
    
