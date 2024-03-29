@@ -40,11 +40,12 @@ jobs:
         with:
           name: dist
           path: dist
+      - name: Change Directory
+        run: cd frontend
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
-        run: |
-          cd frontend
-          npx firebase deploy --only hosting -P travelgpt-3d352
+        with:
+          args: deploy --only hosting -P travelgpt-3d352
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
    
