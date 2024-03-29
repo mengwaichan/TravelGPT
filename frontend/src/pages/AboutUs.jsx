@@ -16,6 +16,7 @@ const AboutUs = () => {
                         Welcome to our travel community! We are passionate about exploring the world and sharing our experiences with you.
                         whether you are a seasoned traveler or planning your first adventure, our platform is here to 
                         inspire and assist you on your journey.
+                    </p>
                     <p className="indent-5">
                         Our team is dedicated to providing valuable travel insights, tips, and recommendations.
                         Join us on this exciting adventure, and let's make every trip unforgettable!
