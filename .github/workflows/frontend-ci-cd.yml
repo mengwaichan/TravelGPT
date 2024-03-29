@@ -42,6 +42,8 @@ jobs:
           path: dist
       - name: Change Directory
         run: cd frontend
+      - name: List Contents
+        run: ls
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
