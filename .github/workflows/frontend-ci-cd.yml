@@ -14,7 +14,7 @@ jobs:
         
       - name: Install Dependencies
         run: npm install --prefix frontend
-        
+      
       - name: Build
         run: npm run build --prefix frontend
         env:
@@ -25,6 +25,30 @@ jobs:
              VITE_APP_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_APP_FIREBASE_STORAGE_BUCKET }}
              VITE_APP_FIREBASE_MSG_SENDER_ID: ${{ secrets.VITE_APP_FIREBASE_MSG_SENDER_ID }}
              VITE_APP_FIREBASE_MEASUREMENT_ID: ${{ secrets.VITE_APP_FIREBASE_MEASUREMENT_ID }}        
+      
+      - name: Archive Production Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: dist
+          path: ./frontend/dist
+          
+  deploy:
+    name: Deploy
+    needs: build
+    
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      
+      - name: Download Artifact
+        uses: actions/download-artifact@master
+        with:
+          name: dist
+          path: dist
+      
+      - name: Move dist
+        run: mv dist frontend/dist
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
