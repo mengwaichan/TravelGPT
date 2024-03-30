@@ -1,0 +1,44 @@
+name: Deploy to Cloud Run
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Create .env file
+        run: |
+          echo "OPENAI_API_KEY=$OPENAI_API_KEY" > backend/.env
+          echo "MAP_API_KEY=$MAP_API_KEY" >> backend/.env
+          echo "FIREBASE_TYPE=$FIREBASE_TYPE" >> backend/.env
+          echo "FIREBASE_PROJECT_ID=$FIREBASE_PROJECT_ID" >> backend/.env
+          echo "FIREBASE_PRIVATE_KEY_ID=$FIREBASE_PRIVATE_KEY_ID" >> backend/.env
+          echo "FIREBASE_PRIVATE_KEY=$FIREBASE_PRIVATE_KEY" >> backend/.env
+          echo "FIREBASE_CLIENT_ID=$FIREBASE_CLIENT_ID" >> backend/.env
+          echo "FIREBASE_AUTH_URI=$FIREBASE_AUTH_URI" >> backend/.env
+          echo "FIREBASE_TOKEN_URI=$FIREBASE_TOKEN_URI" >> backend/.env
+          echo "FIREBASE_AUTH_PROVIDER_x509_CERT_URL=$FIREBASE_AUTH_PROVIDER_x509_CERT_URL" >> backend/.env
+          echo "FIREBASE_CLIENT_x509_CERT_URL=$FIREBASE_CLIENT_x509_CERT_URL" >> backend/.env
+          echo "FIREBASE_UNIVERSE_DOMAIN=$FIREBASE_UNIVERSE_DOMAIN" >> backend/.env
+
+      - name: Login to Google Cloud
+        uses: google-auth/actions@v3
+        with:
+          credentials: ${{ secrets.GOOGLE_CLOUD_CREDENTIALS }}
+
+      - name: Build Docker image
+        run: docker build -t gcr.io/travelgpt-3d352/travelgpt:latest ./backend
+
+      - name: Push Docker image
+        run: docker push gcr.io/travelgpt-3d352/travelgpt:latest
+
+      - name: Deploy to Cloud Run
+        run: gcloud run deploy travelgpt \
+          --image gcr.io/travelgpt-3d352/travelgpt:latest \
+          --region us-east5 \
+          --platform managed
