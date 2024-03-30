@@ -29,7 +29,7 @@ jobs:
       - name: Login to Google Cloud
         uses: 'google-github-actions/auth@v2'
         with:
-          credentials: ${{ secrets.GOOGLE_CLOUD_CREDENTIALS }}
+          credentials_json: ${{ secrets.GOOGLE_CLOUD_CREDENTIALS }}
 
       - name: Build Docker image
         run: docker build -t gcr.io/travelgpt-3d352/travelgpt:latest ./backend
