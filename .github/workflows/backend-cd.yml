@@ -32,13 +32,13 @@ jobs:
           credentials_json: ${{ secrets.GOOGLE_CLOUD_CREDENTIALS }}
 
       - name: Build Docker image
-        run: docker build -t gcr.io/travelgpt-3d352/travelgpt:latest ./backend
+        run: docker build -t us-east5-docker.pkg.dev/travelgpt-3d352/travelgpt/travelgpt:latest ./backend
 
       - name: Push Docker image
-        run: docker push gcr.io/travelgpt-3d352/travelgpt:latest
+        run: docker push us-east5-docker.pkg.dev/travelgpt-3d352/travelgpt/travelgpt:latest
 
       - name: Deploy to Cloud Run
         run: gcloud run deploy travelgpt \
-          --image gcr.io/travelgpt-3d352/travelgpt:latest \
+          --image us-east5-docker.pkg.dev/travelgpt-3d352/travelgpt/travelgpt:latest \
           --region us-east5 \
           --platform managed
