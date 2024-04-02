@@ -16,7 +16,7 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app) 
 
-cred = credentials.Certificate('./firebase_auth.json)
+cred = credentials.Certificate('./firebase_auth.json')
 
 firebase_admin.initialize_app(cred)
 
