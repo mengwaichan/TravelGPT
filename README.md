@@ -1,4 +1,10 @@
 # TravelGPT
+
+## Usage
+
+https://github.com/mengwaichan/TravelGPT/assets/20369540/9a34c7b5-8a45-4feb-bd48-43c506f235fa
+
+
 ## Backend
 ### Built with
 
@@ -77,6 +83,7 @@ make sure to have `.env` in your directory.
 ```bash     
 npm run dev
 ```
+
 ## Contributions
 
 If you would like to contribute to this project, follow these steps:
