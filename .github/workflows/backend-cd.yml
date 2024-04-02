@@ -49,7 +49,4 @@ jobs:
         run: docker push us-east5-docker.pkg.dev/travelgpt-3d352/travelgpt/travelgpt:latest
 
       - name: Deploy to Cloud Run
-        run: gcloud run deploy travelgpt \
-          --image us-east5-docker.pkg.dev/travelgpt-3d352/travelgpt/travelgpt:latest \
-          --region us-east5 \
-          --platform managed
+        run: gcloud run deploy travelgpt --image us-east5-docker.pkg.dev/travelgpt-3d352/travelgpt/travelgpt:latest --region us-east5 --platform managed
