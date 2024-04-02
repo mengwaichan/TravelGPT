@@ -15,17 +15,11 @@ jobs:
         run: |
           echo "OPENAI_API_KEY=$OPENAI_API_KEY" > backend/.env
           echo "MAP_API_KEY=$MAP_API_KEY" >> backend/.env
-          echo "FIREBASE_TYPE=$FIREBASE_TYPE" >> backend/.env
-          echo "FIREBASE_PROJECT_ID=$FIREBASE_PROJECT_ID" >> backend/.env
-          echo "FIREBASE_PRIVATE_KEY_ID=$FIREBASE_PRIVATE_KEY_ID" >> backend/.env
-          echo "FIREBASE_PRIVATE_KEY=$FIREBASE_PRIVATE_KEY" >> backend/.env
-          echo "FIREBASE_CLIENT_ID=$FIREBASE_CLIENT_ID" >> backend/.env
-          echo "FIREBASE_AUTH_URI=$FIREBASE_AUTH_URI" >> backend/.env
-          echo "FIREBASE_TOKEN_URI=$FIREBASE_TOKEN_URI" >> backend/.env
-          echo "FIREBASE_AUTH_PROVIDER_x509_CERT_URL=$FIREBASE_AUTH_PROVIDER_x509_CERT_URL" >> backend/.env
-          echo "FIREBASE_CLIENT_x509_CERT_URL=$FIREBASE_CLIENT_x509_CERT_URL" >> backend/.env
-          echo "FIREBASE_UNIVERSE_DOMAIN=$FIREBASE_UNIVERSE_DOMAIN" >> backend/.env
-
+      - name: Create Credentials file
+        env:
+          FIREBASE_AUTH: ${{secrets.FIREBASE_AUTH }}
+        run: echo "$FIREBASE_AUTH" > backend/firebase_auth.json
+        
       - name: Login to Google Cloud
         uses: 'google-github-actions/auth@v2'
         with:
