@@ -17,7 +17,7 @@ app = Flask(__name__)
 CORS(app) 
 
 cred = credentials.Certificate({
-    "type": os.getenv("FIREBASE_TYPE"),
+    "type": "service_account",
     "project_id": os.getenv("FIREBASE_PROJECT_ID"),
     "private_key_id": os.getenv("FIREBASE_PRIVATE_KEY_ID"),
     "private_key": os.getenv("FIREBASE_PRIVATE_KEY").replace("\\n", "\n"),
