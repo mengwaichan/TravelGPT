@@ -30,6 +30,18 @@ jobs:
         uses: 'google-github-actions/auth@v2'
         with:
           credentials_json: ${{ secrets.GOOGLE_CLOUD_CREDENTIALS }}
+
+      - uses: google/cloud-sdk@latest
+        with:
+          configurations: CLOUD_RUNNER
+          gcloud_args: 'auth configure-docker'
+
+      - name: Check Google Cloud Project and Repository Permissions
+        run: |
+          gcloud auth list  # Verify you're logged in to Google Cloud
+          gcloud projects get-iam-policy travelgpt-3d352 \
+            | grep 'artifactregistry.repositories.uploadArtifacts'  # Check for upload permission
+
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
