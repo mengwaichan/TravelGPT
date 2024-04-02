@@ -49,7 +49,5 @@ jobs:
         run: docker push us-east5-docker.pkg.dev/travelgpt-3d352/travelgpt/travelgpt:latest
 
       - name: Deploy to Cloud Run
-        uses: 'google-github-actions/deploy-cloudrun@v2'
-        with:
-          image: 'us-east5-docker.pkg.dev/travelgpt-3d352/travelgpt/travelgpt:latest'
-          service: 'travelgpt'
+        run: gcloud run deploy travelgpt --image us-east5-docker.pkg.dev/travelgpt-3d352/travelgpt/travelgpt:latest --region us-east5 --platform managed
+
